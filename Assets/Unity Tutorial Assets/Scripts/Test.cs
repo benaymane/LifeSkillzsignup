@@ -5,7 +5,8 @@ public class Test : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Hi");
+		Debug.Log ("Hello");
+		Debug.Log("Testing");
 
 	}
 	
