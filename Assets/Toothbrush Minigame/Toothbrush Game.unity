@@ -168,6 +168,7 @@ GameObject:
   - 4: {fileID: 167589454}
   - 212: {fileID: 167589456}
   - 61: {fileID: 167589455}
+  - 114: {fileID: 167589457}
   m_Layer: 0
   m_Name: Tooth (11)
   m_TagString: Untagged
@@ -231,6 +232,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &167589457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167589453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &239009380
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +276,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 383, y: 137}
+  m_AnchoredPosition: {x: 372, y: 134}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239009382
@@ -386,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -616,7 +628,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -375, y: -79.1}
+  m_AnchoredPosition: {x: -365.9, y: -79.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519128691
@@ -703,6 +715,7 @@ GameObject:
   - 4: {fileID: 577943688}
   - 212: {fileID: 577943690}
   - 61: {fileID: 577943689}
+  - 114: {fileID: 577943691}
   m_Layer: 0
   m_Name: Tooth (2)
   m_TagString: Untagged
@@ -766,6 +779,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &577943691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577943687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596771139
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +800,7 @@ GameObject:
   - 4: {fileID: 596771140}
   - 212: {fileID: 596771142}
   - 61: {fileID: 596771141}
+  - 114: {fileID: 596771143}
   m_Layer: 0
   m_Name: Tooth (7)
   m_TagString: Untagged
@@ -839,6 +864,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &596771143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596771139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &747061735
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +885,7 @@ GameObject:
   - 4: {fileID: 747061736}
   - 212: {fileID: 747061738}
   - 61: {fileID: 747061737}
+  - 114: {fileID: 747061739}
   m_Layer: 0
   m_Name: Tooth (10)
   m_TagString: Untagged
@@ -912,6 +949,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &747061739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747061735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &779841431
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +993,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -375, y: 64}
+  m_AnchoredPosition: {x: -366, y: 64}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &779841433
@@ -1032,6 +1080,7 @@ GameObject:
   - 4: {fileID: 890041520}
   - 212: {fileID: 890041522}
   - 61: {fileID: 890041521}
+  - 114: {fileID: 890041523}
   m_Layer: 0
   m_Name: Tooth (6)
   m_TagString: Untagged
@@ -1095,6 +1144,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &890041523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890041519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &926708426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1165,7 @@ GameObject:
   - 4: {fileID: 926708427}
   - 212: {fileID: 926708429}
   - 61: {fileID: 926708428}
+  - 50: {fileID: 926708430}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -1133,7 +1194,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: -0.0000019073486, y: 0.0000009536743}
   serializedVersion: 2
@@ -1168,6 +1229,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!50 &926708430
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 926708426}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1024197889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1256,7 @@ GameObject:
   - 4: {fileID: 1024197890}
   - 212: {fileID: 1024197892}
   - 61: {fileID: 1024197891}
+  - 114: {fileID: 1024197893}
   m_Layer: 0
   m_Name: Tooth (9)
   m_TagString: Untagged
@@ -1241,6 +1320,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1024197893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024197889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1128073271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1341,7 @@ GameObject:
   - 4: {fileID: 1128073272}
   - 212: {fileID: 1128073274}
   - 61: {fileID: 1128073273}
+  - 114: {fileID: 1128073275}
   m_Layer: 0
   m_Name: Tooth (8)
   m_TagString: Untagged
@@ -1314,6 +1405,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1128073275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128073271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134693019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1426,7 @@ GameObject:
   - 4: {fileID: 1134693020}
   - 212: {fileID: 1134693022}
   - 61: {fileID: 1134693021}
+  - 114: {fileID: 1134693023}
   m_Layer: 0
   m_Name: Tooth (4)
   m_TagString: Untagged
@@ -1387,6 +1490,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1134693023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1134693019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173362956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,7 +1620,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -381, y: 137}
+  m_AnchoredPosition: {x: -372, y: 134}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1263851198
@@ -1644,6 +1758,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+<<<<<<< HEAD
 --- !u!1 &1366032381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,8 +1768,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1366032382}
   - 33: {fileID: 1366032385}
-  - 65: {fileID: 1366032384}
   - 23: {fileID: 1366032383}
+  - 61: {fileID: 1366032386}
+  - 114: {fileID: 1366032384}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -1669,10 +1785,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366032381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.285, y: 0.010000229, z: 0}
-  m_LocalScale: {x: 0.35062474, y: 0.9025001, z: 0.086843565}
-  m_Children: []
-  m_Father: {fileID: 1804970702}
+  m_LocalPosition: {x: 7.6, y: -4.04, z: -3.04}
+  m_LocalScale: {x: 3.4317405, y: 0.9025001, z: 1}
+  m_Children:
+  - {fileID: 1804970702}
+  m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!23 &1366032383
 MeshRenderer:
@@ -1700,18 +1817,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1366032384
-BoxCollider:
+--- !u!114 &1366032384
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366032381}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dfedb1f55d939a4ca629cf0594da280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPieceIndex: 0
 --- !u!33 &1366032385
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1719,6 +1836,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1366032381}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &1366032386
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366032381}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+=======
+>>>>>>> 00d11957e3e6f4d65658f8ad26a86d40873bed61
 --- !u!1 &1625995194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +2008,7 @@ GameObject:
   - 4: {fileID: 1679383041}
   - 212: {fileID: 1679383043}
   - 61: {fileID: 1679383042}
+  - 114: {fileID: 1679383044}
   m_Layer: 0
   m_Name: Tooth (1)
   m_TagString: Untagged
@@ -1938,6 +2072,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1679383044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1679383040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760942850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,6 +2093,7 @@ GameObject:
   - 4: {fileID: 1760942851}
   - 212: {fileID: 1760942853}
   - 61: {fileID: 1760942852}
+  - 114: {fileID: 1760942854}
   m_Layer: 0
   m_Name: Tooth (5)
   m_TagString: Untagged
@@ -2011,6 +2157,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1760942854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760942850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1804970698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,13 +2238,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804970698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.6, y: -8.26, z: -3.04}
+<<<<<<< HEAD
+  m_LocalPosition: {x: -0.81283474, y: -0.011080585, z: 0}
+  m_LocalScale: {x: 2.852052, y: 1.1080332, z: 11.514958}
+  m_Children:
+  - {fileID: 926708427}
+  m_Father: {fileID: 1366032382}
+  m_RootOrder: 0
+=======
+  m_LocalPosition: {x: 7.1, y: -7.93, z: -3.04}
   m_LocalScale: {x: 9.787502, y: 1, z: 11.514958}
   m_Children:
   - {fileID: 926708427}
-  - {fileID: 1366032382}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+>>>>>>> 00d11957e3e6f4d65658f8ad26a86d40873bed61
 --- !u!1 &1888064437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2263,7 @@ GameObject:
   - 4: {fileID: 1888064438}
   - 212: {fileID: 1888064440}
   - 61: {fileID: 1888064439}
+  - 114: {fileID: 1888064441}
   m_Layer: 0
   m_Name: Tooth (3)
   m_TagString: Untagged
@@ -2161,6 +2327,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1888064441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1888064437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1945997188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2433,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988628716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
@@ -2337,7 +2514,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -375, y: 16.2}
+  m_AnchoredPosition: {x: -366, y: 16.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997431374
@@ -2424,6 +2601,7 @@ GameObject:
   - 4: {fileID: 2001262541}
   - 212: {fileID: 2001262540}
   - 61: {fileID: 2001262542}
+  - 114: {fileID: 2001262543}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Untagged
@@ -2487,6 +2665,17 @@ BoxCollider2D:
   m_Offset: {x: -0.0000019073486, y: 0}
   serializedVersion: 2
   m_Size: {x: 10.239999, y: 2.56}
+--- !u!114 &2001262543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2001262539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec91990b4614464b8018b6ab83b51cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093368107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,7 +2709,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -375, y: -31.3}
+  m_AnchoredPosition: {x: -365.9, y: -31.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093368109
