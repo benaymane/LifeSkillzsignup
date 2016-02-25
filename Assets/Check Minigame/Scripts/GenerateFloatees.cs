@@ -8,7 +8,7 @@ public class GenerateFloatees : MonoBehaviour {
 
 	//Floatees are the 
 	string[] floatees = new string[]{"500", "02/12/16", "For Deposit Only", "Angela Brannon-Baptiste", "Five Hundred Only"};
-	boolean[] usedFloatees = new boolean[] {false, false, false, false, false};
+	bool[] usedFloatees = new bool[] {false, false, false, false, false};
 
 	void Start () {
 		savedTime = Time.time;
