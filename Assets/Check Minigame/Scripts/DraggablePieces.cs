@@ -5,6 +5,8 @@ public class DraggablePieces : MonoBehaviour {
 
     public int thisPieceIndex;
     private bool draggable = true;
+	private bool clicked = false;
+    public static DraggablePieces dragging = null;
 
     private Vector3 mouseOffset;
     private Vector3 currPos;
@@ -37,12 +39,17 @@ public class DraggablePieces : MonoBehaviour {
 	     //checks if the user is pressing on the draggable object
 	     RaycastHit2D hit = Physics2D.Raycast(
 	       Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up);
-
+      
+			
 	     //if object is being pressed
-	     if (hit && hit.collider.GetComponent<DraggablePieces>() == this) {
+		if (clicked || (hit && hit.collider.GetComponent<DraggablePieces>() == this)) {
 
 	      //if the object can currently be dragged
-	      if (draggable) {
+	      if (draggable && (DraggablePieces.dragging == null || DraggablePieces.dragging == this)) {
+
+			clicked = true;
+
+          	DraggablePieces.dragging = this;
 
 	        //calculates location where object should be dragged
 	        Vector2 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + mouseOffset;
@@ -58,10 +65,13 @@ public class DraggablePieces : MonoBehaviour {
 	  }
 
 	  else {
+		clicked = false;	
 
 	    mouseOffset = currPos - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
 	                                                                       Input.mousePosition.y,
 	                                                                       Input.mousePosition.z));
+
+      DraggablePieces.dragging = null;
 
 	  }
 	}
@@ -84,7 +94,7 @@ public class DraggablePieces : MonoBehaviour {
 	    if (!Input.GetMouseButton(0)) {
 
 	      //if the index of the slot matches the index of the piece
-	      if (draggedSlot.getIndex() == thisPieceIndex) {
+	      if (draggedSlot.getIndex() == thisPieceIndex && draggable) {
 
 	        //snap the check piece into place
 	        Snap(draggedSlot.gameObject.transform.position);
@@ -101,6 +111,8 @@ public class DraggablePieces : MonoBehaviour {
 
 	  //sets position
 	  this.transform.position = location;
+
+    Score.scoreScript.addScore();
 
 	  //makes object impossible to drag anymore.
 	  draggable = false;
