@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CheckSlots : MonoBehaviour {
 
-    public int thisSlotIndex;
+    public string searchString;
 
 	// Use this for initialization
 	void Start () {
@@ -15,9 +15,9 @@ public class CheckSlots : MonoBehaviour {
 	
 	}
 
-	public int getIndex() {
+	public string getSearchString() {
 
-	  return thisSlotIndex;
+    return searchString;
 
 	}
 }

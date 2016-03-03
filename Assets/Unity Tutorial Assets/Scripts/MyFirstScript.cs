@@ -3,16 +3,16 @@ using System.Collections;
 
 public class MyFirstScript : MonoBehaviour {
 
-    public float spawnHeight;
+  public float spawnHeight;
 
-    public Vector2 xRange;
+  public Vector2 xRange;
 
-    public Object spawnObject;
+  public Object spawnObject;
 
-    public float spawnDelay;
+  public float spawnDelay;
 
-    private float savedTime;
-
+  private float savedTime;
+  
 	// Use this for initialization
 	void Start () {
 

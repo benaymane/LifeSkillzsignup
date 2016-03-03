@@ -18,9 +18,13 @@ public class Signature : MonoBehaviour {
 
        //checks if the user is pressing on the draggable object
        RaycastHit2D hit = Physics2D.Raycast(
-         Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up);
+         Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector3.forward);
+
+       Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector3.forward * 1000);
 
        if (hit && hit.collider.gameObject == this.gameObject) {
+
+         Debug.Log(hit.collider.gameObject.name);
 
          GameObject sig = (GameObject)GameObject.Instantiate(signatureObject,
                            Camera.main.ScreenToWorldPoint(Input.mousePosition),
@@ -29,7 +33,6 @@ public class Signature : MonoBehaviour {
          sig.transform.position = new Vector3(sig.transform.position.x,
                                               sig.transform.position.y,
                                               0);
-        
        }
      }
 	}
