@@ -17,7 +17,6 @@ public class CheckSlots : MonoBehaviour {
 
 	public string getSearchString() {
 
-
     return searchString;
 
 	}

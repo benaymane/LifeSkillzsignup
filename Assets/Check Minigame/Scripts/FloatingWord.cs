@@ -69,14 +69,17 @@ public class FloatingWord : MonoBehaviour {
 
   }
 
-  void OnTriggerStay2D(Collider2D other) {
+  public bool getLocked() {
 
-    Debug.Log("ON SLOTTTT");
+    return locked;
+
+  }
+
+  void OnTriggerStay2D(Collider2D other) {
 
     if (other.GetComponent<CheckSlots>()) {
       if (other.GetComponent<CheckSlots>().getSearchString() == GetComponent<TextMesh>().text) {
 
-        Debug.Log("YAY");
         lockedSlot = other.GetComponent<CheckSlots>();
 
       }
