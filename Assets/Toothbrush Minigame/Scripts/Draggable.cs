@@ -102,7 +102,7 @@ public class Draggable : MonoBehaviour
             {
 
                 //if the index of the slot matches the index of the piece
-                if (draggedSlot.getIndex() == thisPieceIndex && draggable)
+                if (draggedSlot.getSearchString() == GetComponent<TextMesh>().text && draggable)
                 {
 
                     //snap the check piece into place
