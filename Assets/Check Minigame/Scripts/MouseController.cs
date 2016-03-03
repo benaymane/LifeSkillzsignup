@@ -18,18 +18,20 @@ public class MouseController : MonoBehaviour {
   
     if (Input.GetMouseButton(0)) {
 
-      if (storedWord) {
+      if (storedWord && !storedWord.getLocked()) {
 
         Vector2 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + mouseOffset;
         storedWord.transform.position = newPosition;
 
       }
 
-      else {
+    }
+
+    if (Input.GetMouseButtonDown(0)) {
 
         //checks if the user is pressing on the draggable object
         RaycastHit2D hit = Physics2D.Raycast(
-         Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up);
+         Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
 
          if (hit && hit.collider.GetComponent<FloatingWord>()) {
 
@@ -41,9 +43,7 @@ public class MouseController : MonoBehaviour {
                                    Input.mousePosition.y,
                                    Input.mousePosition.z));
 
-      
 
-         }
       }
     }
 
