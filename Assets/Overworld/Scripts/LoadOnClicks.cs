@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class LoadOnClicks: MonoBehaviour {
 
-	public GameObject panel;
+	//public GameObject panel;
 	public float fadeDuration = 3;
 
 	public void LoadScene(int level)
 	{
 
-		StartCoroutine (FadeIn ());
+		//StartCoroutine (FadeIn ());
 		//SceneManager.LoadScene (level);
-		//Application.LoadLevel(level);
+		Application.LoadLevel(level);
 	}
 
+	/*
 	IEnumerator FadeIn() {
       
 		Color startColor = copyColor(panel.GetComponent<Image> ().color);
@@ -29,7 +30,7 @@ public class LoadOnClicks: MonoBehaviour {
 
 			yield return null;
 		}
-	}
+	}*/
 
 	Color copyColor(Color colorToCopy) {
 
