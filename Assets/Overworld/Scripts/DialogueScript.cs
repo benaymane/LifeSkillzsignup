@@ -6,6 +6,7 @@ public class DialogueScript : MonoBehaviour {
 	public GameObject introDialogue;
 	public GameObject gameDialogue;
 	public GameObject startButton;
+	public GameObject nextButton;
 
 	private bool dialogueControl = true;
 
@@ -14,10 +15,12 @@ public class DialogueScript : MonoBehaviour {
 		introDialogue.SetActive (true);
 		gameDialogue.SetActive (false);
 		startButton.SetActive (false);
+		nextButton.SetActive (true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		if (Application.platform != RuntimePlatform.Android ) {
 			if (Input.GetMouseButtonDown(0)) {
 				if (dialogueControl) {
@@ -34,5 +37,14 @@ public class DialogueScript : MonoBehaviour {
 				startButton.SetActive (true);
 			}
 		}
+		*/
 	}
+
+	public void Next() {
+		introDialogue.SetActive (false);
+		gameDialogue.SetActive (true);
+		startButton.SetActive (true);
+		nextButton.SetActive (false);
+
+	} 
 }
