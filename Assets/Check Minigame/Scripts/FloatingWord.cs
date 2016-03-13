@@ -3,6 +3,10 @@ using System.Collections;
 
 public class FloatingWord : MonoBehaviour {
 
+  public static ArrayList lockedWordObjects;
+  public static ArrayList lockedWords;
+  public static int fieldsFilled = 0;
+
   private float floatDuration;
   private Vector3 endLocation;
   private CheckSlots lockedSlot;
@@ -37,11 +41,11 @@ public class FloatingWord : MonoBehaviour {
   public void setGrabbed(bool grabbed) {
 
     if (grabbed == false) {
-
       if (lockedSlot) {
+       if (!(FloatingWord.lockedWords).Contains(lockedSlot.getSearchString())) {
 
         Snap(lockedSlot.transform.position);
-
+        }
       }
 
       else {
@@ -93,10 +97,12 @@ public class FloatingWord : MonoBehaviour {
 
     //sets position
     this.transform.position = location;
-
-    Score.scoreScript.addScore();
+    FloatingWord.lockedWordObjects.Add(this.gameObject);
+    lockedWords.Add(GetComponent<TextMesh>().text);
 
     locked = true;
+    FloatingWord.fieldsFilled++;
+    Controller.blanksFilled++;
 
   }
 
