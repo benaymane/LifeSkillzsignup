@@ -58,7 +58,7 @@ public class SamController : MonoBehaviour {
          unhealthyFood++;
           SamController.tileMoveDuration+=speedChange;
          }
-
+ 
        }
 
        calculateSpeedPercentage();

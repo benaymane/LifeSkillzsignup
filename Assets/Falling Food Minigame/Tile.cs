@@ -5,11 +5,13 @@ using System.Collections.Generic;
 public class Tile : MonoBehaviour {
 
   public float scrollDuration = 10;
-  public Object regularTile;
+  public int maxNumTiles = 30;
+
+  private bool fin = false;
 
   private float tileMoveProgress = 0;
 
-  //public static bool raceStarted = false;
+  public static int tilesSpawned = 0;
 
   public int maxFoodPerTile = 5;
 
@@ -22,7 +24,7 @@ public class Tile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+  
     setTileSpeed();
     center = this.transform.position;
 
@@ -42,8 +44,11 @@ public class Tile : MonoBehaviour {
   IEnumerator scrollDown() {
     
     Vector3 startPosition = this.transform.position;
-    Vector3 offScreenDestination = new Vector3(this.transform.position.x,
-                                               Camera.main.transform.position.y - Camera.main.orthographicSize*2);
+    Vector3 tileFloatDestination;
+
+    tileFloatDestination = new Vector3(this.transform.position.x,
+                                      Camera.main.transform.position.y - Camera.main.orthographicSize*2);
+
 
     while (true) {
 
@@ -53,17 +58,22 @@ public class Tile : MonoBehaviour {
       for (tileMoveProgress = 0; tileMoveProgress < scrollDuration; tileMoveProgress+=Time.deltaTime) {
 
 
-        if (tileMoveProgress >= scrollDuration/4 && !spawned) {
+        if (tileMoveProgress >= scrollDuration/4 && !spawned && !fin) {
 
           spawnNewTile();
           spawned = true;
 
         }
 
-        this.transform.position = Vector3.Lerp(startPosition, offScreenDestination, tileMoveProgress/scrollDuration);
+        if (fin && tileMoveProgress >= (scrollDuration*0.75)) break;
+
+        this.transform.position = Vector3.Lerp(startPosition, tileFloatDestination, tileMoveProgress/scrollDuration);
         yield return null;
 
       }
+
+      if (fin) break;
+
 
       GameObject.Destroy(this.gameObject);
 
@@ -72,14 +82,24 @@ public class Tile : MonoBehaviour {
 
   void spawnNewTile() {
 
-    Debug.Log("SPAWN");
     Vector3 destination = this.transform.position;
     destination.y += (height)/2;
 
-    GameObject newTile = (GameObject)GameObject.Instantiate(ScrollTrack.regularTrack, destination, Quaternion.identity);
-    newTile.GetComponent<Tile>().placeFood();
+    if (Tile.tilesSpawned < maxNumTiles) {
 
+      GameObject newTile = (GameObject)GameObject.Instantiate(ScrollTrack.regularTrack, destination, Quaternion.identity);
+      newTile.GetComponent<Tile>().placeFood();
+      Tile.tilesSpawned++;
+    }
 
+    else {
+
+      GameObject newTile = (GameObject)GameObject.Instantiate(ScrollTrack.finTrack, destination, Quaternion.identity);
+      newTile.GetComponent<Tile>().isFin();
+
+    }
+
+    Debug.Log("TILE NUMBER " + Tile.tilesSpawned + " spawned ");
 
   }
 
@@ -122,6 +142,14 @@ public class Tile : MonoBehaviour {
 
     scrollDuration = SamController.tileMoveDuration;
     
+
+  }
+
+  public void isFin() {
+
+
+    fin = true;
+
 
   }
 }

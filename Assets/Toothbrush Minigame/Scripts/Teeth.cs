@@ -44,6 +44,7 @@ public class Teeth : MonoBehaviour {
                 //Setting the z pos to 0 cause otherwise it's too far away from the camera.
                 particlePos.z = 0;
 
+                FinishButton.teethCleaned++;
                 GameObject.Instantiate(finishedParticleEffect, particlePos, new Quaternion());
                 GetComponent<AudioSource>().Play();
             }
