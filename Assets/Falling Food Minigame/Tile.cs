@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class Tile : MonoBehaviour {
 
+  public static float raceCompletedPercent = 0;
   public float scrollDuration = 10;
-  public int maxNumTiles = 30;
+  public float maxNumTiles = 30;
 
   private bool fin = false;
 
   private float tileMoveProgress = 0;
 
-  public static int tilesSpawned = 0;
+  public static float tilesSpawned = 0;
 
   public int maxFoodPerTile = 5;
 
@@ -36,7 +37,9 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+  
+    Tile.raceCompletedPercent = ((float)Tile.tilesSpawned / (float)maxNumTiles) * 100;
+    Debug.Log("PERCENT: " + Tile.tilesSpawned / maxNumTiles);
     setTileSpeed();
 
 	}

@@ -7,14 +7,15 @@ public class SamController : MonoBehaviour {
   private int unhealthyFood = 0;
 
   public float speedChange = 0.1f;
-  public float minDuration = 4;
-  public float maxDuration = 20;
+  public float minDuration = 3;
+  public float maxDuration = 15;
 
   private float speedPercentage;
   private float percentDifference;
 
   public GameObject controller;
   public static float tileMoveDuration = 10;
+  public PercentScores percentScore;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +25,6 @@ public class SamController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-    Debug.Log(speedPercentage + "%");
 
     if (Input.GetMouseButton(0)) {
 
@@ -70,6 +69,8 @@ public class SamController : MonoBehaviour {
 
     speedPercentage = ((SamController.tileMoveDuration - minDuration) / (maxDuration - minDuration)) * 100;
     speedPercentage = 100 - speedPercentage;
+    percentScore.updateSpeed(speedPercentage);
+
 
    }
 
