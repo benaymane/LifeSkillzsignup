@@ -19,7 +19,7 @@ public class Finished : MonoBehaviour {
         bool clean = true;
         foreach(Transform tooth in teethMom.transform)
         {
-            if (tooth.gameObject.GetComponent<Teeth>().touched == false)
+            if (tooth.gameObject.GetComponent<Teeth>().isClean == false)
                 clean = false;
         }
 

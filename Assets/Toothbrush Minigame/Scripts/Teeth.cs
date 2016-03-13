@@ -1,30 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Teeth : MonoBehaviour {
 
-    public bool touched = false;
-	public GameObject toothbrush;
-	public float maxRange = 0f;
-	public float minRange = -1f;
+    //How many times does the brush need to touch this tooth to be clean?
+    public float numTimesToClean = 5;
 
+    //How many times has the brush touched it so far?
+    private float numTimesTouched = 0;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		Vector3 vecCollide = toothbrush.GetComponent<CircleCollider2D> ().transform.position - GetComponent<BoxCollider2D> ().transform.position;
-		if (vecCollide.y < maxRange && vecCollide.y > minRange) {
-			Debug.Log ("clean clean clean");
-		}
-		//Debug.Log (vecCollide);
-	}
+    //Is created when the tooth is fully cleaned.
+    public GameObject finishedParticleEffect;
 
+    //Hardcoded greenish
+    public Color dirtyColor = new Color(.76f, 1.0f, 0f ,.38f);
+
+    //Pure white.
+    public Color cleanColor = new Color(1f,1f,1f);
+
+    //True when fully cleaned.
+    public bool isClean = false;
+
+    //Meat of the code, assumed that only the brush will collide with this tooth.
     void OnTriggerEnter2D (Collider2D other) {
-        touched = true;
-		Debug.Log ("teeth");
+
+        //If the teeth still need to be cleaned.
+        if (numTimesTouched < numTimesToClean)
+        {
+            numTimesTouched++;
+
+            //Lerping between dirty and clean values based on how many touches happened.
+            GetComponent<Image>().color = Color.Lerp(dirtyColor, cleanColor, numTimesTouched / numTimesToClean);
+
+            //Last one, create particle effect and play sound.
+            if (numTimesTouched == numTimesToClean)
+            {
+                isClean = true;
+
+                //Getting the position and placing it above the background.
+                Vector3 particlePos = this.transform.position;
+
+                //Setting the z pos to 0 cause otherwise it's too far away from the camera.
+                particlePos.z = 0;
+
+                GameObject.Instantiate(finishedParticleEffect, particlePos, new Quaternion());
+                GetComponent<AudioSource>().Play();
+            }
+        }
     }
 }
