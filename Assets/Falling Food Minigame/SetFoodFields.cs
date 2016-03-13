@@ -8,23 +8,9 @@ public class SetFoodFields : MonoBehaviour {
 
   private int minutes;
   private int seconds;
+  private int healthyFood;
+  private int unhealthyFood;
 
-  // Use this for initialization
-  void OnEnable () {
-
-    convertElapsedTime();
-
-    scoreText.text = "Time: " + minutes + " minutes and " + seconds + " seconds" + "\n\n" +
-                     "Healthy Food Eaten: " + Controller.blanksFilled + "\n\n" +
-                     "Unhealthy Food Eaten: " + Controller.checksCompleted + "\n\n" +
-                     "Total Score: " + (Controller.blanksFilled + 5*Controller.checksCompleted);
-
-
-    GlobalScore.score += Controller.blanksFilled + (5*Controller.checksCompleted);
-                     
-  
-  }
-  
   // Update is called once per frame
   void Update () {
   
@@ -47,6 +33,36 @@ public class SetFoodFields : MonoBehaviour {
     }
 
     seconds = totalTime;
+
+  }
+
+  public void setHealthyFoodValue(int val) {
+
+    healthyFood = val;
+
+  }
+
+  public void setUnhealthyFoodValue(int val) {
+
+    unhealthyFood = val;
+
+  }
+
+  public void updateScore() {
+
+    convertElapsedTime();
+
+    int totalScore = (healthyFood - unhealthyFood);
+    if (totalScore < 0) totalScore = 0;
+
+    scoreText.text = "Time: " + minutes + " minutes and " + seconds + " seconds" + "\n\n" +
+                     "Healthy Food Eaten: " + healthyFood + "\n\n" +
+                     "Unhealthy Food Eaten: " + unhealthyFood + "\n\n" +
+                     "Total Score: " + totalScore; 
+
+
+    GlobalScore.score += totalScore;
+
 
   }
 }

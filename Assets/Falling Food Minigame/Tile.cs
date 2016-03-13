@@ -72,8 +72,12 @@ public class Tile : MonoBehaviour {
 
       }
 
-      if (fin) break;
+      if (fin) {
 
+        GameObject.Find("Controller").GetComponent<ScrollTrack>().loadScoreScreen();
+        break;
+
+      }
 
       GameObject.Destroy(this.gameObject);
 
@@ -88,8 +92,11 @@ public class Tile : MonoBehaviour {
     if (Tile.tilesSpawned < maxNumTiles) {
 
       GameObject newTile = (GameObject)GameObject.Instantiate(ScrollTrack.regularTrack, destination, Quaternion.identity);
-      newTile.GetComponent<Tile>().placeFood();
-      Tile.tilesSpawned++;
+
+      if (BeginRace.started) {
+        newTile.GetComponent<Tile>().placeFood();
+        Tile.tilesSpawned++;
+      }
     }
 
     else {
@@ -98,8 +105,6 @@ public class Tile : MonoBehaviour {
       newTile.GetComponent<Tile>().isFin();
 
     }
-
-    Debug.Log("TILE NUMBER " + Tile.tilesSpawned + " spawned ");
 
   }
 
@@ -139,7 +144,6 @@ public class Tile : MonoBehaviour {
   public void setTileSpeed() {
 
     tileMoveProgress *= (SamController.tileMoveDuration /scrollDuration);
-
     scrollDuration = SamController.tileMoveDuration;
     
 
@@ -147,9 +151,7 @@ public class Tile : MonoBehaviour {
 
   public void isFin() {
 
-
     fin = true;
-
 
   }
 }

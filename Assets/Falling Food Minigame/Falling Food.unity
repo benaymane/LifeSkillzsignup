@@ -231,7 +231,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 304, y: -129}
+  m_AnchoredPosition: {x: 325, y: -129}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93201152
@@ -253,7 +253,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d1a91643e7a874003b3da42c3a8d6960, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 191dd40e9bba04d5d89cc406e5068678, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -308,10 +308,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSpawnLocation: {x: 0, y: 0, z: 0}
   tileDuration: 10
-  regularTrackPrefab: {fileID: 0}
-  finTrackPrefab: {fileID: 0}
-  startTrack: {fileID: 0}
-  finishTrack: {fileID: 0}
+  regularTrackPrefab: {fileID: 191950, guid: 5a182c0eb2bcb4f94b322a87d29bb287, type: 2}
+  finTrackPrefab: {fileID: 140632, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+  startTrack: {fileID: 181574, guid: 5af867d202be047378274feb10dbfda9, type: 2}
+  finishTrack: {fileID: 140632, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
 --- !u!1 &317090660
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +784,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72, y: -177}
+  m_AnchoredPosition: {x: -124.4, y: -177}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852271549
@@ -808,7 +808,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -819,7 +819,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Thanks for your help!
+  m_Text: Thanks for helping me win the race!
 --- !u!222 &852271550
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 191950, guid: 5a182c0eb2bcb4f94b322a87d29bb287, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a182c0eb2bcb4f94b322a87d29bb287, type: 2}
@@ -958,6 +958,7 @@ GameObject:
   - 222: {fileID: 946866317}
   - 114: {fileID: 946866316}
   - 114: {fileID: 946866315}
+  - 114: {fileID: 946866318}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1022,6 +1023,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 946866318}
+        m_MethodName: startRace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1289196884}
         m_MethodName: SetActive
         m_Mode: 6
@@ -1068,6 +1080,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946866313}
+--- !u!114 &946866318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 946866313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dadbcaa73821452ca5255073a6a08d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &965413012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1544478680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,6 +1662,56 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1682336640}
+--- !u!1001 &1727252368
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.319
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427626, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+      propertyPath: m_Name
+      value: Finish Line (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ace372724a95544289a87d8c3a06f6e3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1732386129
 Prefab:
   m_ObjectHideFlags: 0

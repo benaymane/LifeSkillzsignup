@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SamController : MonoBehaviour {
 
-  int healthyFood = 0;
-  int unhealthyFood = 0;
+  private int healthyFood = 0;
+  private int unhealthyFood = 0;
 
   public float speedChange = 0.1f;
   public float minDuration = 4;
@@ -70,6 +70,19 @@ public class SamController : MonoBehaviour {
 
     speedPercentage = ((SamController.tileMoveDuration - minDuration) / (maxDuration - minDuration)) * 100;
     speedPercentage = 100 - speedPercentage;
+
+   }
+
+   public int getHealthyFood() {
+
+     Debug.Log("HEALTHY FOOD: " + healthyFood);
+     return healthyFood;
+
+   }
+
+   public int getUnhealthyFood() {
+
+     return unhealthyFood;
 
    }
 

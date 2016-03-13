@@ -4,6 +4,8 @@ using System.Collections;
 public class ScrollTrack : MonoBehaviour {
 
   public Vector3 tileSpawnLocation;
+  public GameObject scoreScreen;
+  public SamController sam;
   public float tileDuration = 10;
 
   public static float elapsedTime = 0;
@@ -41,7 +43,18 @@ public class ScrollTrack : MonoBehaviour {
     if (Time.time - lastRecordedTime >= 1) {
 
       ScrollTrack.elapsedTime++;
+      lastRecordedTime = Time.time;
 
     }
 	}
+
+
+   public void loadScoreScreen() {
+
+     scoreScreen.SetActive(true);
+     scoreScreen.GetComponent<SetFoodFields>().setHealthyFoodValue(sam.getHealthyFood());
+     scoreScreen.GetComponent<SetFoodFields>().setUnhealthyFoodValue(sam.getUnhealthyFood());
+     scoreScreen.GetComponent<SetFoodFields>().updateScore();
+
+   }
 }
