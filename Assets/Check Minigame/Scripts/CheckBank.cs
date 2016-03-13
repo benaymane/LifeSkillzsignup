@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CheckBank : MonoBehaviour {
 
   public int numOfWrongWords = 2;
+  public int rightWordOccurence = 2;
 
   private string[] nameBank;
   private string[] dateBank;
@@ -50,12 +51,15 @@ public class CheckBank : MonoBehaviour {
     chosenValues[5] = signature;
 
     selectedFloatWords = new ArrayList();
-    selectedFloatWords.Add(chosenValues[0]);
-    selectedFloatWords.Add(chosenValues[1]);
-    selectedFloatWords.Add(chosenValues[2]);
-    selectedFloatWords.Add(chosenValues[3]);
-    selectedFloatWords.Add(chosenValues[4]);
-    selectedFloatWords.Add(chosenValues[5]);
+
+    for (int i = 0; i < rightWordOccurence; i++) {
+      selectedFloatWords.Add(chosenValues[0]);
+      selectedFloatWords.Add(chosenValues[1]);
+      selectedFloatWords.Add(chosenValues[2]);
+      selectedFloatWords.Add(chosenValues[3]);
+      selectedFloatWords.Add(chosenValues[4]);
+      selectedFloatWords.Add(chosenValues[5]);
+    }
 
     for (int i = 0; i < numOfWrongWords; i++) {
 

@@ -16,6 +16,8 @@ public class FloatingWord : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+    FloatingWord.fieldsFilled = 0;
     
 	}
 	
