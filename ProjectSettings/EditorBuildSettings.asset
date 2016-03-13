@@ -6,17 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< HEAD
-    path: Assets/Overworld/Overworld.unity
-=======
     path: Assets/Overworld/Scenes/OverviewMap.unity
   - enabled: 1
     path: Assets/Overworld/Scenes/CheckGameStory.unity
-  - enabled: 0
-    path: Assets/Overworld/Scenes/Check Game 1.unity
   - enabled: 1
     path: Assets/Check Minigame/Check Game.unity
-<<<<<<< HEAD
   - enabled: 1
     path: Assets/Overworld/Scenes/RaceGameStory.unity
   - enabled: 1
@@ -25,6 +19,3 @@ EditorBuildSettings:
     path: Assets/Overworld/Scenes/TeethGameStory.unity
   - enabled: 1
     path: Assets/Toothbrush Minigame/Toothbrush Game.unity
-=======
->>>>>>> 6f901b98979b971773640432322fcb3937d28d5a
->>>>>>> ac0b1a0bef98cc1c00bd4e84aaeac0b50f6aac2f

@@ -12,8 +12,8 @@ public class LoadOnClicks: MonoBehaviour {
 	{
 
 		//StartCoroutine (FadeIn ());
-		//SceneManager.LoadScene (level);
-		Application.LoadLevel(level);
+		SceneManager.LoadScene (level);
+		//Application.LoadLevel(level);
 	}
 
 	/*
