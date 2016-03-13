@@ -20,4 +20,10 @@ public class CheckSlots : MonoBehaviour {
     return searchString;
 
 	}
+
+  public void setSearchString(string searchString) {
+
+    this.searchString = searchString;
+
+  }
 }
