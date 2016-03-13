@@ -7,6 +7,9 @@ public class FloatingWord : MonoBehaviour {
   public static ArrayList lockedWords;
   public static int fieldsFilled = 0;
 
+  public AudioSource successClip;
+  public AudioSource failClip;
+
   private float floatDuration;
   private Vector3 endLocation;
   private CheckSlots lockedSlot;
@@ -47,11 +50,12 @@ public class FloatingWord : MonoBehaviour {
        if (!(FloatingWord.lockedWords).Contains(lockedSlot.getSearchString())) {
 
         Snap(lockedSlot.transform.position);
+
         }
       }
 
       else {
-
+        Controller.failClip.Play();
         GameObject.Destroy(this.gameObject);
         return;
 
@@ -89,7 +93,7 @@ public class FloatingWord : MonoBehaviour {
         lockedSlot = other.GetComponent<CheckSlots>();
 
       }
-    }
+    } 
   }
 
   /*
@@ -105,6 +109,7 @@ public class FloatingWord : MonoBehaviour {
     locked = true;
     FloatingWord.fieldsFilled++;
     Controller.blanksFilled++;
+    successClip.Play();
 
   }
 

@@ -14,6 +14,8 @@ public class Controller : MonoBehaviour {
   public static int checksCompleted = 0;
   public static float elapsedTime = 0;
 
+  public static AudioSource failClip;
+
   private float startTime;
   private float endTime;
 
@@ -48,6 +50,7 @@ public class Controller : MonoBehaviour {
 	// Use this for initializatioin
 	void Start () {
 
+    Controller.failClip = GetComponent<AudioSource>();
     scoreScreen.SetActive(false);
     startTime = Time.time;
     Controller.blanksFilled = 0;

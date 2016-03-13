@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &191950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 478912}
+  - 212: {fileID: 21217004}
+  - 114: {fileID: 11442866}
+  m_Layer: 0
+  m_Name: Track Texture (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &478912
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34, y: 0.47, z: 67.585785}
+  m_LocalScale: {x: 0.20151663, y: 0.2406168, z: 0.2406168}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11442866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74553cf8c5a84ba0be5c2305c83fcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollDuration: 7
+  regularTile: {fileID: 191950}
+  maxFoodPerTile: 5
+  healthyFood:
+  - {fileID: 164748, guid: c1fc1c98cf93f4da3ac786d276e80996, type: 2}
+  - {fileID: 184686, guid: 7266562b2cdc64814977fa51ac11f0cb, type: 2}
+  - {fileID: 152810, guid: 9e32a01b5f4454348932c57ecbe1be40, type: 2}
+  unhealthyFood:
+  - {fileID: 163476, guid: 7eea7ca13be9b4f029b385224b0b28b3, type: 2}
+  - {fileID: 137750, guid: acc8457bf070441cfb7202a4764ac249, type: 2}
+  - {fileID: 102534, guid: 8c5250bf7f7b04e9ebe9ac8456b322c7, type: 2}
+--- !u!212 &21217004
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191950}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 571347075ab1c401e8d5c43ab3c06959, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: healthyFood.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: unhealthyFood.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scrollDuration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthyFood.Array.data[0]
+      value: 
+      objectReference: {fileID: 164748, guid: c1fc1c98cf93f4da3ac786d276e80996, type: 2}
+    - target: {fileID: 0}
+      propertyPath: healthyFood.Array.data[1]
+      value: 
+      objectReference: {fileID: 184686, guid: 7266562b2cdc64814977fa51ac11f0cb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: healthyFood.Array.data[2]
+      value: 
+      objectReference: {fileID: 152810, guid: 9e32a01b5f4454348932c57ecbe1be40, type: 2}
+    - target: {fileID: 0}
+      propertyPath: unhealthyFood.Array.data[0]
+      value: 
+      objectReference: {fileID: 163476, guid: 7eea7ca13be9b4f029b385224b0b28b3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: unhealthyFood.Array.data[1]
+      value: 
+      objectReference: {fileID: 137750, guid: acc8457bf070441cfb7202a4764ac249, type: 2}
+    - target: {fileID: 0}
+      propertyPath: unhealthyFood.Array.data[2]
+      value: 
+      objectReference: {fileID: 102534, guid: 8c5250bf7f7b04e9ebe9ac8456b322c7, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 191950}
+  m_IsPrefabParent: 1
