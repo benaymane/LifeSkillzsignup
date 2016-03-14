@@ -23,7 +23,8 @@ public class ScrollTrack : MonoBehaviour {
 	void Start () {
 
     lastRecordedTime = Time.time;
-
+    Tile.tilesSpawned = 0;
+    Tile.raceCompletedPercent = 0;
     ScrollTrack.elapsedTime = 0;
     ScrollTrack.regularTrack = regularTrackPrefab;
     ScrollTrack.finTrack = finTrackPrefab;

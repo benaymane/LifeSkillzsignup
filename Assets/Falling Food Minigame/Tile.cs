@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-  
+
     setTileSpeed();
     center = this.transform.position;
 
@@ -64,6 +64,7 @@ public class Tile : MonoBehaviour {
         if (tileMoveProgress >= scrollDuration/4 && !spawned && !fin) {
 
           spawnNewTile();
+         
           spawned = true;
 
         }
@@ -98,6 +99,7 @@ public class Tile : MonoBehaviour {
 
       if (BeginRace.started) {
         newTile.GetComponent<Tile>().placeFood();
+        Debug.Log("INCREMENTING");
         Tile.tilesSpawned++;
       }
     }
@@ -123,13 +125,13 @@ public class Tile : MonoBehaviour {
       Debug.Log(randomBit);
       if (randomBit < 0) {
 
-        foodToPlace = healthyFood[Random.Range(0, healthyFood.Length-1)];
+        foodToPlace = healthyFood[Random.Range(0, healthyFood.Length)];
 
       }
 
       else {
 
-        foodToPlace = unhealthyFood[Random.Range(0, healthyFood.Length-1)];
+        foodToPlace = unhealthyFood[Random.Range(0, healthyFood.Length)];
 
       }
 

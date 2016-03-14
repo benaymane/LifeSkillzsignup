@@ -50,6 +50,7 @@ public class Controller : MonoBehaviour {
 	// Use this for initializatioin
 	void Start () {
 
+    FloatingWord.fieldsFilled = 0;
     Controller.failClip = GetComponent<AudioSource>();
     scoreScreen.SetActive(false);
     startTime = Time.time;
@@ -74,8 +75,7 @@ public class Controller : MonoBehaviour {
 
     }
 
-    Debug.Log(FloatingWord.fieldsFilled);
-
+    Debug.Log("FIELDS FILLED: " + FloatingWord.fieldsFilled);
 
     if (FloatingWord.fieldsFilled == 6) {
 

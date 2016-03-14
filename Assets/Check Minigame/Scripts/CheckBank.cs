@@ -35,6 +35,7 @@ public class CheckBank : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	
 	}
 
@@ -43,11 +44,11 @@ public class CheckBank : MonoBehaviour {
     string[] chosenValues = new string[6];
     List<string> amountNums = new List<string>(amountBank.Keys);
 
-    chosenValues[0] = dateBank[Random.Range(0, dateBank.Length-1)];
-    chosenValues[1] = nameBank[Random.Range(0, nameBank.Length-1)];
-    chosenValues[2] = amountNums[Random.Range(0, amountNums.Count-1)];
+    chosenValues[0] = dateBank[Random.Range(0, dateBank.Length)];
+    chosenValues[1] = nameBank[Random.Range(0, nameBank.Length)];
+    chosenValues[2] = amountNums[Random.Range(0, amountNums.Count)];
     amountBank.TryGetValue(chosenValues[2], out chosenValues[3]);
-    chosenValues[4] = purposeBank[Random.Range(0, purposeBank.Length-1)];
+    chosenValues[4] = purposeBank[Random.Range(0, purposeBank.Length)];
     chosenValues[5] = signature;
 
     selectedFloatWords = new ArrayList();
@@ -63,13 +64,13 @@ public class CheckBank : MonoBehaviour {
 
     for (int i = 0; i < numOfWrongWords; i++) {
 
-      selectedFloatWords.Add(dateBank[Random.Range(0, dateBank.Length-1)]);
-      selectedFloatWords.Add(nameBank[Random.Range(0, nameBank.Length-1)]);
-      selectedFloatWords.Add(amountNums[Random.Range(0, amountNums.Count-1)]);
-      selectedFloatWords.Add(purposeBank[Random.Range(0, purposeBank.Length-1)]);
+      selectedFloatWords.Add(dateBank[Random.Range(0, dateBank.Length)]);
+      selectedFloatWords.Add(nameBank[Random.Range(0, nameBank.Length)]);
+      selectedFloatWords.Add(amountNums[Random.Range(0, amountNums.Count)]);
+      selectedFloatWords.Add(purposeBank[Random.Range(0, purposeBank.Length)]);
 
       string tempString;
-      amountBank.TryGetValue(amountNums[Random.Range(0, amountNums.Count-1)], out tempString);
+      amountBank.TryGetValue(amountNums[Random.Range(0, amountNums.Count)], out tempString);
       selectedFloatWords.Add(tempString);
 
     }

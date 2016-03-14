@@ -5,7 +5,7 @@ public class FloatingWord : MonoBehaviour {
 
   public static ArrayList lockedWordObjects;
   public static ArrayList lockedWords;
-  public static int fieldsFilled = 0;
+  public static int fieldsFilled;
 
   public AudioSource successClip;
   public AudioSource failClip;
@@ -19,8 +19,7 @@ public class FloatingWord : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-    FloatingWord.fieldsFilled = 0;
+  
     
 	}
 	
