@@ -6,6 +6,9 @@ public class SamController : MonoBehaviour {
   private int healthyFood = 0;
   private int unhealthyFood = 0;
 
+  public AudioSource goodFood;
+  public AudioSource badFood;
+
   public float speedChange = 0.1f;
   public float minDuration = 3;
   public float maxDuration = 15;
@@ -46,6 +49,7 @@ public class SamController : MonoBehaviour {
 
          if (SamController.tileMoveDuration > minDuration) {
          healthyFood++;
+         goodFood.Play();
          SamController.tileMoveDuration-=speedChange;
          }
 
@@ -55,6 +59,7 @@ public class SamController : MonoBehaviour {
 
          if (SamController.tileMoveDuration < maxDuration) {
          unhealthyFood++;
+         badFood.Play();
           SamController.tileMoveDuration+=speedChange;
          }
  
