@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 104425edb0215449db92eea3b83b5a1c
-timeCreated: 1457862535
+guid: 61dc2acae990248989d4a719a2fdea8f
+timeCreated: 1458168045
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - foodAudio: {fileID: 8300000, guid: 3c518296ef7314a0a86a34596f00e610, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

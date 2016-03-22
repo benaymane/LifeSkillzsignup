@@ -3,24 +3,24 @@ using System.Collections;
 
 public class DialogueScript : MonoBehaviour {
 
-	public GameObject introDialogue;
-	public GameObject gameDialogue;
-	public GameObject startButton;
-	public GameObject nextButton;
+  public GameObject introDialogue;
+  public GameObject gameDialogue;
+  public GameObject startButton;
+  public GameObject nextButton;
+ 
+  // Use this for initialization
+  void Start() {
+    
+    introDialogue.SetActive(true);
+    gameDialogue.SetActive(false);
+    startButton.SetActive(false);
+    nextButton.SetActive(true);
 
-	private bool dialogueControl = true;
-
-	// Use this for initialization
-	void Start () {
-		introDialogue.SetActive (true);
-		gameDialogue.SetActive (false);
-		startButton.SetActive (false);
-		nextButton.SetActive (true);
-	}
+  }
 	
-	// Update is called once per frame
-	void Update () {
-		/*
+  // Update is called once per frame
+  void Update() {
+    /*
 		if (Application.platform != RuntimePlatform.Android ) {
 			if (Input.GetMouseButtonDown(0)) {
 				if (dialogueControl) {
@@ -38,13 +38,14 @@ public class DialogueScript : MonoBehaviour {
 			}
 		}
 		*/
-	}
+  }
 
-	public void Next() {
-		introDialogue.SetActive (false);
-		gameDialogue.SetActive (true);
-		startButton.SetActive (true);
-		nextButton.SetActive (false);
+  public void Next() {
+    
+    introDialogue.SetActive(false);
+    gameDialogue.SetActive(true);
+    startButton.SetActive(true);
+    nextButton.SetActive(false);
 
-	} 
+  }
 }
