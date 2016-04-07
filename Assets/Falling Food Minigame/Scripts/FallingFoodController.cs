@@ -7,6 +7,8 @@ using System.Collections.Generic;
 /// </summary>
 public class FallingFoodController : MonoBehaviour, SpeedChanger {
 
+  public SamController sam;
+
   //track prefab to spawn tracks from
   public Track regularTrackPrefab;
 
@@ -15,11 +17,13 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
 
   public Sprite finishLineSprite;
 
-  //all speed listeners current listening for speed changes
-  List<SpeedListener> speedListeners;
-
   //scoreboard visible on screen
   public PercentScores scoreTracker;
+
+  public FoodScore finalScore;
+
+  //all speed listeners current listening for speed changes
+  List<SpeedListener> speedListeners;
 
   //speed of everything that scrolls
   private float scrollSpeed;
@@ -53,50 +57,53 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   //indeces for the track array
   private const int LOWER_TRACK_INDEX = 0, UPPER_TRACK_INDEX = 1;
 
+  private Timer gameTimer;
+
 
   // Use this for initialization
-  void Start() {
+  void Start () {
 
     //Sets the initial scroll speed based on desired starting percent value
     scrollSpeed = ((startSpeedPercent / 100) * (maxSpeed - minSpeed)) + minSpeed;
 
     //initializes array of speed listeners
-    speedListeners = new List<SpeedListener>();
+    speedListeners = new List<SpeedListener> ();
 
     //spawns two tracks that will be used throughout the game
-    scrollingTracks = spawnTracks();
+    scrollingTracks = spawnTracks ();
 
     //spawns a healthy (or unhealthy) portion of food above camera
     for (int i = 0; i < numFoodOnScreen; i++) {
 
       //spawns food in space above camera
-      spawnFood(Camera.main.orthographicSize * 2);
+      spawnFood (Camera.main.orthographicSize * 2);
 
       //spawns food in 2x space above camera - ensures flow
-      spawnFood(Camera.main.orthographicSize * 4);
+      spawnFood (Camera.main.orthographicSize * 4);
 
     }
 
     //initializes the score tracker with correct speeds
-    scoreTracker.Initialize(minSpeed, maxSpeed, scrollSpeed);
+    scoreTracker.Initialize (minSpeed, maxSpeed, scrollSpeed);
 
     //registers the score tracker as a speed listener
-    registerSpeedListener(scoreTracker);
+    registerSpeedListener (scoreTracker);
+
+    gameTimer = new Timer();
 
   }
-	
-  // Update is called once per frame
-  void Update() {
+
+  void Update () {
    
     //updates race completion value
-    updateCompletion();
+    updateCompletion ();
 	
   }
 
   /// <summary>
   /// Spawns the two initial tracks that will loop for rest of minigame
   /// </summary>
-  private Track[] spawnTracks() {
+  private Track[] spawnTracks () {
 
     Track[] scrollingTracks = new Track[2];
 
@@ -110,16 +117,16 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
     for (int trackNum = 0; trackNum < 2; trackNum++) {
 
       //creates and stores a new track
-      scrollingTracks[trackNum] = (Track)GameObject.Instantiate(regularTrackPrefab, trackSpawnPosition, new Quaternion());
+      scrollingTracks [trackNum] = (Track)GameObject.Instantiate (regularTrackPrefab, trackSpawnPosition, new Quaternion ());
 
       //registers the new track as a speed listener - will get speed updates
-      registerSpeedListener(scrollingTracks[trackNum]);
+      registerSpeedListener (scrollingTracks [trackNum]);
 
       //initializes track values (only speed, in this case)
-      scrollingTracks[trackNum].Initialize(scrollSpeed);
+      scrollingTracks [trackNum].Initialize (scrollSpeed);
 
       //increases track spawn position for next track piece
-      trackSpawnPosition.y += scrollingTracks[trackNum].getTrackHeight();
+      trackSpawnPosition.y += scrollingTracks [trackNum].getTrackHeight ();
 
     }
 
@@ -131,14 +138,14 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   /// Spawns food randomly in space directly above camera
   /// </summary>
   /// <param name="camOffset">How far above camera to spawn foodt.</param>
-  private void spawnFood(float camOffset) {
+  private void spawnFood (float camOffset) {
 
     //height and width of camera - used to determine where to spawn food
     float camHeight = Camera.main.orthographicSize;
     float camWidth = camHeight * Camera.main.aspect;
 
     //gets a random location relative to camera boundaries
-    Vector3 randomLoc = MyRandom.Location2D(Camera.main.transform.position, camWidth, camHeight);
+    Vector3 randomLoc = MyRandom.Location2D (Camera.main.transform.position, camWidth, camHeight);
 
     //sets y value of new location +offset above camera
     randomLoc.y += camOffset;
@@ -147,23 +154,23 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
     randomLoc.z = Camera.main.transform.position.z + trackOffsetFromCamera - 1;
 
     //gets a random food from the food prefabs
-    Food randomFood = foodPrefabs[MyRandom.Index(foodPrefabs.Length)];
+    Food randomFood = foodPrefabs [MyRandom.Index (foodPrefabs.Length)];
 
     //instantiates a random food
-    Food newFood = (Food)GameObject.Instantiate(randomFood, randomLoc, new Quaternion());
+    Food newFood = (Food)GameObject.Instantiate (randomFood, randomLoc, new Quaternion ());
 
     //initializes food values
-    newFood.Initialize(scrollSpeed, this);
+    newFood.Initialize (scrollSpeed, this);
 
     //registers the new food as a speed listener, will get scroll speed updates
-    registerSpeedListener(newFood);
+    registerSpeedListener (newFood);
 
   }
 
   /// <summary>
   /// Updates the race completion value and displays on scoreboard
   /// </summary>
-  private void updateCompletion() {
+  private void updateCompletion () {
 
     //current rate of track completion as a numerical value, based on current speed
     float rateOfCompletion = (100 / startSpeedPercent) * ((scrollSpeed - minSpeed) / (maxSpeed - minSpeed));
@@ -177,14 +184,16 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
     if (completionPercentage >= 100) {
 
       completionPercentage = 100;
-      scrollingTracks[UPPER_TRACK_INDEX].setFinish(finishLineSprite);
+      scrollingTracks [UPPER_TRACK_INDEX].setFinish (finishLineSprite);
+      finalScore.gameObject.SetActive(true);
+      finalScore.Initialize(gameTimer, sam.getHealthyFood(), sam.getUnhealthyFood());
+      scrollSpeed = 0;
+      updateSpeedListener();
 
     }
 
     //displays the new completion percentage on the score tracker
-    scoreTracker.displayRaceCompletion(completionPercentage);
-
-
+    scoreTracker.displayRaceCompletion (completionPercentage);
 
   }
 
@@ -192,10 +201,10 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   /// Registers a speed listener.
   /// </summary>
   /// <param name="speedListenerObject">Speed listener object.</param>
-  public void registerSpeedListener(SpeedListener speedListenerObject) {
+  public void registerSpeedListener (SpeedListener speedListenerObject) {
 
     //registers the speedListenerObject as a speedListener to get updates
-    speedListeners.Add(speedListenerObject);
+    speedListeners.Add (speedListenerObject);
 
   }
 
@@ -203,22 +212,22 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   /// Removes a speed listener.
   /// </summary>
   /// <param name="speedListenerObject">Speed listener object.</param>
-  public void removeSpeedListener(SpeedListener speedListenerObject) {
+  public void removeSpeedListener (SpeedListener speedListenerObject) {
 
     //removes the speedListenerObject from the speedListener list
-    speedListeners.Remove(speedListenerObject);
+    speedListeners.Remove (speedListenerObject);
 
   }
 
   /// <summary>
   /// Updates all speed listeners
   /// </summary>
-  public void updateSpeedListener() {
+  public void updateSpeedListener () {
 
     //updates all speedListeners with the new and correct speed
     foreach (SpeedListener speedListenerObject in speedListeners) {
 
-      speedListenerObject.updateScrollSpeed(scrollSpeed);
+      speedListenerObject.updateScrollSpeed (scrollSpeed);
 
     }
   }
@@ -229,7 +238,7 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   /// <param name="percentChange">Positive or negative speed change:
   /// -1 if negative and 1 if positive
   /// </param>
-  public void updateScrollSpeed(int change) {
+  public void updateScrollSpeed (int change) {
 
     //initially calculates current speed as a percent
     float newPercentSpeed = 100 * ((this.scrollSpeed - minSpeed) / (maxSpeed - minSpeed));
@@ -247,14 +256,14 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
       this.scrollSpeed = newSpeed;
 
       //notify all speed listeners of speed change
-      updateSpeedListener();
+      updateSpeedListener ();
     }
 
     //if speed change is too high
     else if (newSpeed >= maxSpeed) {
 
       //display a speed percent of 100 by default, exceeded max
-      scoreTracker.displaySpeedPercent(100);
+      scoreTracker.displaySpeedPercent (100);
 
     }
 
@@ -262,7 +271,7 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
     else if (newSpeed <= minSpeed) {
 
       //display a speed percent of 1 by default, exceeded min
-      scoreTracker.displaySpeedPercent(1);
+      scoreTracker.displaySpeedPercent (1);
 
     }
   }
@@ -271,16 +280,16 @@ public class FallingFoodController : MonoBehaviour, SpeedChanger {
   /// Removes food from the game after it's been used or scrolled past
   /// </summary>
   /// <param name="food">Food to remove.</param>
-  public void removeFood(Food food) {
+  public void removeFood (Food food) {
 
     //removes this food from the list of speedListeners
-    speedListeners.Remove(food);
+    speedListeners.Remove (food);
 
     //destroys the food gameObject
-    GameObject.Destroy(food.gameObject);
+    GameObject.Destroy (food.gameObject);
 
     //spawns a new piece of food
-    spawnFood(Camera.main.orthographicSize * 2);
+    spawnFood (Camera.main.orthographicSize * 2);
 
   }
 }

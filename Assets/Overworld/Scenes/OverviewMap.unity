@@ -1710,6 +1710,7 @@ GameObject:
   - 114: {fileID: 1519964287}
   - 114: {fileID: 1519964286}
   - 114: {fileID: 1519964291}
+  - 114: {fileID: 1519964292}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1781,6 +1782,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1826,6 +1828,17 @@ MonoBehaviour:
   schoolButton: {fileID: 847891910}
   bathroomButton: {fileID: 1488125349}
   nextButton: {fileID: 1114366989}
+--- !u!114 &1519964292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519964285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47501835f00c146b09645d4693db4c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1617561748
 GameObject:
   m_ObjectHideFlags: 0

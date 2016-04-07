@@ -97,7 +97,8 @@ public abstract class Food : MonoBehaviour, SpeedListener {
     //       from position 5 to 10 instantly, which certainly doesn't flow. So instead, we set
     //       the timer to a new value and keep the position constant, and use the new speed
     //       in the equation to ensure that the food doesn't move in the transition.
-    scrollTimer.set(nextPosition / speed);
+    if (speed > 0)
+      scrollTimer.set(nextPosition / speed);
 
     //updates speed to new speed
     this.scrollSpeed = speed;

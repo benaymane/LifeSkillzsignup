@@ -14,6 +14,8 @@ public class Track : MonoBehaviour, SpeedListener {
 
   //next position track should move to, for scrolling
   private float nextPosition;
+
+  private float lastPosition;
  
   //timer to keep track of where track should be at a given time
   Timer trackTimer;
@@ -27,6 +29,7 @@ public class Track : MonoBehaviour, SpeedListener {
 
     //sets the start position
     startPosition = transform.position;
+    
   }
 	
   // Called once per frame
@@ -63,7 +66,8 @@ public class Track : MonoBehaviour, SpeedListener {
     //       from position 5 to 10 instantly, which certainly doesn't flow. So instead, we set
     //       the timer to a new value and keep the position constant, and use the new speed
     //       in the equation to ensure that the track doesn't move in the transition.
-    trackTimer.set(nextPosition / speed);
+    if (speed > 0)
+      trackTimer.set(nextPosition / speed);
 
     //updates the speed
     this.scrollSpeed = speed;
@@ -77,10 +81,31 @@ public class Track : MonoBehaviour, SpeedListener {
     float scrollProgress = trackTimer.getElapsedTime() * scrollSpeed;
 
     //scrolls the tile until it's moved it's entire height, at which point it starts over from top
-    nextPosition = Mathf.Repeat(trackTimer.getElapsedTime() * scrollSpeed, getTrackHeight());
+    nextPosition = Mathf.Repeat(scrollProgress, getTrackHeight());
+
+    /* 
+     * TODO: Implement finish line
+    if (!scrolling && (nextPosition < lastPosition)) {
+
+      return;
+
+    }
+    */
 
     //float newPosition = trackTimer.getElapsedTime() * speed;
     transform.position = startPosition + (Vector3.down * nextPosition);
+
+    /*
+     * TODO: Implement finish line
+    if (raceComplete && scrolling && (nextPosition < lastPosition)) {
+
+      convertToFinishLine();
+      stopScrolling();
+
+    }
+    */
+  
+    lastPosition = nextPosition;
 
   }
 

@@ -39,10 +39,10 @@ public class SetFoodFields : MonoBehaviour {
     if (totalScore < 0)
       totalScore = 0;
 
-    //scoreText.text = //TODO TIMER
-
-
     GlobalScore.score += totalScore;
+
+
+
 
 
   }
