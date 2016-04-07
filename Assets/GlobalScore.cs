@@ -15,13 +15,11 @@ public class GlobalScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-    Debug.Log("CURRENT SCORE: " + GlobalScore.score);
 	
 	}
 
   public static void addScore(int num) {
 
-    Debug.Log("Adding: " + num);
 
 
     GlobalScore.score+=num;

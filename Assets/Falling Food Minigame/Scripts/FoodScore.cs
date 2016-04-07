@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FoodScore : MonoBehaviour {
@@ -31,7 +31,7 @@ public class FoodScore : MonoBehaviour {
 
   void returnToCity() {
 
-    EditorSceneManager.LoadScene(0);
+    SceneManager.LoadScene(0);
 
   }
 }
