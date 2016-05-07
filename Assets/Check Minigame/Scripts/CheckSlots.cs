@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Class to place on check fields, will determine what fields can be placed on check
+/// </summary>
 public class CheckSlots : MonoBehaviour {
 
-    public string searchString;
+  //the string this check field is looking for
+  public string searchString;
 
 	// Use this for initialization
 	void Start () {

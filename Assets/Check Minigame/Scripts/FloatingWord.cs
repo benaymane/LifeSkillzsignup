@@ -84,6 +84,10 @@ public class FloatingWord : MonoBehaviour {
 
   }
 
+  /// <summary>
+  /// Checks if the floating word has been dragged into a check field
+  /// </summary>
+  /// <param name="other"></param>
   void OnTriggerStay2D(Collider2D other) {
 
     if (other.GetComponent<CheckSlots>()) {
@@ -95,9 +99,11 @@ public class FloatingWord : MonoBehaviour {
     } 
   }
 
-  /*
-   * Snaps an object to a location
-   */
+
+  /// <summary>
+  /// Snaps a floating word into the correct check field
+  /// </summary>
+  /// <param name="location"></param>
   void Snap(Vector2 location) {
 
     //sets position
@@ -112,6 +118,10 @@ public class FloatingWord : MonoBehaviour {
 
   }
 
+  /// <summary>
+  /// Moves the word across the screen
+  /// </summary>
+  /// <returns></returns>
   IEnumerator floatWord() {
 
     float i = 0;

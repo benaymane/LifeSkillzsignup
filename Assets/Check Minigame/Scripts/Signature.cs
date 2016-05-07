@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+/// <summary>
+/// NOT FINISHED
+/// </summary>
 public class Signature : MonoBehaviour {
 
   private bool done = true;
