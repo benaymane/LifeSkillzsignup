@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore everything
 /*
 /*/
@@ -16,3 +17,11 @@ ehthumbs.db
 Thumbs.db
 $RECYCLE.BIN/
 Desktop.ini
+.DS_Store
+Library
+Temp
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
