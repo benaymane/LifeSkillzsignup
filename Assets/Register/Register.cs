@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 public class Register : MonoBehaviour {
     //Input field vars
@@ -35,27 +36,39 @@ public class Register : MonoBehaviour {
         if (!complete())
             sendError(errorCode.UNCOMPLETE_FORM);
 
-        if (!match(_email, _emailConf))
+        else if (!match(_email, _emailConf))
             sendError(errorCode.INPUT_MISSMATCH, "email");
 
-        if (!match(_password, _passwordConf))
+        else if (!match(_password, _passwordConf))
             sendError(errorCode.INPUT_MISSMATCH, "password");
 
-        if (!emailFormat(_email))
+        else if (!emailFormat(_email))
             sendError(errorCode.WRONG_FORMAT);
 
-        if (!lengthChecker(_password))
+        else if (!lengthChecker(_password))
             sendError(errorCode.WRONG_LENGTH);
 
         //If successful display a welcoming message
         //TO DO need code to go back to login page
-        EditorUtility.DisplayDialog("Congratulations!", "Thank you for joining us " + username, "Proceed");
+        else
+            EditorUtility.DisplayDialog("Congratulations!", "Thank you for joining us " + _username + _year, "Proceed");
     }
     // Use this for initialization
     void Start () {
-	
+        populate_Dropbox();
 	}
-	
+
+	void populate_Dropbox( )
+    {
+        for (int i = 1; i < 13; i++)
+            month.options.Add(new Dropdown.OptionData(i.ToString()));
+
+        for (int i = 1; i < 32; i++)
+            day.options.Add(new Dropdown.OptionData(i.ToString()));
+
+        for (int i = 0; i < 102; i++)
+            year.options.Add(new Dropdown.OptionData((DateTime.Now.Year - i).ToString()));
+    }
 	// Update is called once per frame
 	void Update () {
         //Reading inputs and DoB and store in local vars.
@@ -65,9 +78,9 @@ public class Register : MonoBehaviour {
         _password = password.GetComponent<InputField>().text;
         _passwordConf = passwordConf.GetComponent<InputField>().text;
 
-        _months = month.value++;
-        _day = day.value++;
-        _year = year.value++;
+        _months = month.value;
+        _day = day.value;
+        _year = year.value;
     }
 
     /* Helper methods to check for errors
@@ -93,6 +106,7 @@ public class Register : MonoBehaviour {
     //Checks if 2 strings are the same
     bool match(string arg1, string arg2)
     {
+        //TO DO NEED TO IGNORE CASE FOR EMAIL
         return arg1.Equals(arg2);
     }
 
