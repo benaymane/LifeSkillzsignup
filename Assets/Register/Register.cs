@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour {
     //Input field vars
@@ -29,7 +30,28 @@ public class Register : MonoBehaviour {
     private enum errorCode { UNCOMPLETE_FORM, INPUT_MISSMATCH,
         WRONG_FORMAT, WRONG_LENGTH};
 
-    //Function to be called when "Create" button is clicked
+    // Use this for initialization
+    void Start () {
+        populate_Dropbox();
+	}
+
+	// Update is called once per frame
+	void Update () {
+        //Reading inputs and DoB and store in local vars.
+        _username = username.GetComponent<InputField>().text;
+        _email = email.GetComponent<InputField>().text.ToLower(); //Emails are not case sensative.
+        _emailConf = emailConf.GetComponent<InputField>().text.ToLower();
+        _password = password.GetComponent<InputField>().text;
+        _passwordConf = passwordConf.GetComponent<InputField>().text;
+
+        _months = month.value;
+        _day = day.value;
+        _year = year.value;
+    }
+
+    /* Functionality of page */
+
+    //Called when "Create" button is clicked to create a new profile
     public void registerButton()
     {
         //Check for possible errors
@@ -50,63 +72,44 @@ public class Register : MonoBehaviour {
 
         //If successful display a welcoming message
         //TO DO need code to go back to login page
-        else
+        else {
             EditorUtility.DisplayDialog("Congratulations!", "Thank you for joining us " + _username + _year, "Proceed");
+            loginTransfer();
+        }
     }
-    // Use this for initialization
-    void Start () {
-        populate_Dropbox();
-	}
 
-	void populate_Dropbox( )
+    //Takes user back to login page. Also attached to "return" button
+    public void loginTransfer()
     {
-        for (int i = 1; i < 13; i++)
-            month.options.Add(new Dropdown.OptionData(i.ToString()));
-
-        for (int i = 1; i < 32; i++)
-            day.options.Add(new Dropdown.OptionData(i.ToString()));
-
-        for (int i = 0; i < 102; i++)
-            year.options.Add(new Dropdown.OptionData((DateTime.Now.Year - i).ToString()));
-    }
-	// Update is called once per frame
-	void Update () {
-        //Reading inputs and DoB and store in local vars.
-        _username = username.GetComponent<InputField>().text;
-        _email = email.GetComponent<InputField>().text;
-        _emailConf = emailConf.GetComponent<InputField>().text;
-        _password = password.GetComponent<InputField>().text;
-        _passwordConf = passwordConf.GetComponent<InputField>().text;
-
-        _months = month.value;
-        _day = day.value;
-        _year = year.value;
+        SceneManager.LoadScene("Login");
     }
 
     /* Helper methods to check for errors
-       Not necessarly ordered same as in Register function */
+       There is no order */
 
-    //Checks if there is no empty inputfields
+    //Checks if there is no empty inputfields and DoB selected
     bool complete()
     {
-        //TO DO need to check for MM/DD/YYYY
         return (_username != "" && _email != "" && _emailConf != ""
-            && _password != "" && _passwordConf != "");
+            && _password != "" && _passwordConf != ""
+            && _day != 0 && _months != 0 && _year != 0);
     }
 
-    //Checks if the email format is of xxxxx@xxx.xxx format 
+    //Checks if the email format is of *@*.* format where * is any combination of alphabets
     bool emailFormat(string email)
     { 
-        /* First check if there is a @, if there is then make sure the index of it is smaller than .
-           Keep in mind if . doesn't exist than the index of it is -1 and if @ exists then the second 
-           check will be false */
+        /* 
+            This method is weak, needs better coding for better checking.
+
+            First check if there is a @, if there is then make sure the index of it is smaller than .
+            Keep in mind if . doesn't exist than the index of it is -1 and if @ exists then the second 
+            check will be false */
         return email.IndexOf('@') != -1 ? (email.IndexOf('@') < email.IndexOf('.') ? true : false) : false;
     }
 
     //Checks if 2 strings are the same
     bool match(string arg1, string arg2)
     {
-        //TO DO NEED TO IGNORE CASE FOR EMAIL
         return arg1.Equals(arg2);
     }
 
@@ -143,4 +146,21 @@ public class Register : MonoBehaviour {
         EditorUtility.DisplayDialog("ERROR!", error, "Retry");
 
     }
+
+    //Automatically adds options to DoB dropbox
+    void populate_Dropbox()
+    {
+        //12 months
+        for (int i = 1; i < 13; i++)
+            month.options.Add(new Dropdown.OptionData(i.ToString()));
+
+        //31 days
+        for (int i = 1; i < 32; i++)
+            day.options.Add(new Dropdown.OptionData(i.ToString()));
+
+        //101 years starting from current year
+        for (int i = 0; i < 102; i++)
+            year.options.Add(new Dropdown.OptionData((DateTime.Now.Year - i).ToString()));
+    }
+
 }
