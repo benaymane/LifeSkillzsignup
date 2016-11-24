@@ -22,21 +22,26 @@ public class Register : MonoBehaviour {
         _email,
         _emailConf,
         _password,
-        _passwordConf;
+        _passwordConf,
+        dob;
 
     private int _months, _day, _year;
 
+    //Database object
+    private dbHandler db = new dbHandler();
+
     //Enum to declare different errors.
     private enum errorCode { UNCOMPLETE_FORM, INPUT_MISSMATCH,
-        WRONG_FORMAT, WRONG_LENGTH};
+        WRONG_FORMAT, WRONG_LENGTH, ACCOUNT_EXISTS};
+    private bool errorOccur = false;
 
     // Use this for initialization
     void Start () {
         populate_Dropbox();
-	}
+    }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         //Reading inputs and DoB and store in local vars.
         _username = username.GetComponent<InputField>().text;
         _email = email.GetComponent<InputField>().text.ToLower(); //Emails are not case sensative.
@@ -47,6 +52,8 @@ public class Register : MonoBehaviour {
         _months = month.value;
         _day = day.value;
         _year = year.value;
+
+        dob = _months + "/" + _day + "/" + (DateTime.Now.Year - _year + 1).ToString();
     }
 
     /* Functionality of page */
@@ -54,6 +61,7 @@ public class Register : MonoBehaviour {
     //Called when "Create" button is clicked to create a new profile
     public void registerButton()
     {
+        errorOccur = false;
         //Check for possible errors
         if (!complete())
             sendError(errorCode.UNCOMPLETE_FORM);
@@ -69,15 +77,25 @@ public class Register : MonoBehaviour {
 
         else if (!lengthChecker(_password))
             sendError(errorCode.WRONG_LENGTH);
-
         //If successful display a welcoming message
         //TO DO need code to go back to login page
-        else {
-            EditorUtility.DisplayDialog("Congratulations!", "Thank you for joining us " + _username + _year, "Proceed");
-            loginTransfer();
-        }
+        else if (db.exist(_email))
+            sendError(errorCode.ACCOUNT_EXISTS, "email");
+        else if (db.exist(_username))
+            sendError(errorCode.ACCOUNT_EXISTS, "username");
+
+        if (errorOccur)
+            return;
+
+        EditorUtility.DisplayDialog("Congratulations!", "Thank you for joining us " + _username + " !\nWe are simply delighted!!", "Proceed");
+        db.addAccount(_username, _email, _password, dob);
+        loginTransfer();
     }
 
+    bool accountVerify( )
+    {
+        return (!db.exist(_username) && !db.exist(_email));
+    }
     //Takes user back to login page. Also attached to "return" button
     public void loginTransfer()
     {
@@ -122,6 +140,7 @@ public class Register : MonoBehaviour {
     //Handles different errors. Notice the second parameter is not always necessary and thus has a default
     void sendError(errorCode code, string field = "")
     {
+        errorOccur = true;
         string error = "";
 
         switch (code)
@@ -135,11 +154,14 @@ public class Register : MonoBehaviour {
                 break;
 
             case errorCode.WRONG_FORMAT:
-                error = "Your email is not in the right format.\n Correct format: xxxx@xxx.xxx";
+                error = "Your email is not in the right format!\n Correct format: xxxx@xxx.xxx";
                 break;
 
             case errorCode.WRONG_LENGTH:
-                error = "Your password is less than 6 characters";
+                error = "Your password is less than 6 characters!";
+                break;
+            case errorCode.ACCOUNT_EXISTS:
+                error = "The " + field + " you have entered is already in use. Please pick a different one!";
                 break;
         };
 
