@@ -327,8 +327,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1282813304}
-        m_MethodName: overworldTransfer
+      - m_Target: {fileID: 1282813305}
+        m_MethodName: signinButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1282813304}
+      - m_Target: {fileID: 1282813305}
         m_MethodName: signupTransfer
         m_Mode: 1
         m_Arguments:
@@ -936,6 +936,7 @@ GameObject:
   - 222: {fileID: 1282813303}
   - 114: {fileID: 1282813302}
   - 114: {fileID: 1282813304}
+  - 114: {fileID: 1282813305}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1010,6 +1011,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca8559aacc574d9db7b7887fcd5e915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1282813305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1282813300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa7224e0d9165546921d98f8595b943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: {fileID: 1538451932}
+  password: {fileID: 782612833}
 --- !u!1 &1473426066
 GameObject:
   m_ObjectHideFlags: 0

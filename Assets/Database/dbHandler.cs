@@ -3,15 +3,19 @@ using System.Collections;
 using System.IO;
 
 public class dbHandler : MonoBehaviour {
+    //Database name
     const string FILE_NAME = "LifeSkillsDB.txt";
 
+    //Current users + 1
     int id;
+
+    //Handles writing or reading from DB
     StreamWriter inFile;
     StreamReader outFile;
     
+    //Constructor to setup the DB header if it didn't exist before
     public dbHandler( )
     {
-        //UnityEditor.EditorUtility.DisplayDialog("errr", "eeeeee", "ok");
         openToWrite();
         if (new FileInfo(FILE_NAME).Length == 0)
             inFile.WriteLine("ID\tUsername\tEmail\tPassword\tDoB");
@@ -25,6 +29,7 @@ public class dbHandler : MonoBehaviour {
        
     }
 
+    //Adds a new line in DB with the account information
     public void addAccount( string username, string email, string password, string dob)
     {
         openToWrite();
@@ -33,30 +38,39 @@ public class dbHandler : MonoBehaviour {
         close();
     }
 
+    //Checks if username or password exist in DB, if so then checks if password is correct.
     public bool exist( string login, string password )
     {
+        //We get the line where the user lives
         string[] user = getUser(login);
 
-        if (user[3].Equals(password))
-            return true;
+        //Check if there is such user OR if the password is the same
+        if (user == null || !user[3].Equals(password))
+            return false;
 
-        return false;
+        return true;
     }
 
+    //Checks if an account exists by checking if username/email is there already
     public bool exist( string value )
     {
         return getUser(value) == null ? false : true;
     }
 
+    //Helper private methods
+
+    //Reads line by line and if username/email found returns the account info (line)
+    //as a string array where each element is the information (id, username, email...) 
+    //of the account searched for.
     string[] getUser( string value )
     {
         openToRead();
-        string line = outFile.ReadLine(); //Read header
+        string line = outFile.ReadLine(); //Skip header
         string[] choppedLine;
 
         while ((line = outFile.ReadLine()) != null)
         {
-            choppedLine = line.Split('\t');
+            choppedLine = line.Split('\t'); //split line by tabs
             if (choppedLine[1].Equals(value) || choppedLine[2].Equals(value))
             {
                 close();
@@ -68,6 +82,7 @@ public class dbHandler : MonoBehaviour {
         return null;
     }
 
+    //Reads and keep track of how many lines there are in DB
     int readLines()
     {
         openToRead();
@@ -80,16 +95,19 @@ public class dbHandler : MonoBehaviour {
         return i;
     }
 
+    //Opens the DB to be read from
     private void openToRead()
     {
         outFile = new StreamReader(FILE_NAME);
     }
 
+    //Opens the DB to be writen into
     private void openToWrite()
     {
         inFile = new StreamWriter(FILE_NAME, true);
     }
 
+    //Closes the DB
     private void close()
     {
         if (inFile != null)
@@ -98,6 +116,7 @@ public class dbHandler : MonoBehaviour {
         if (outFile != null)
             outFile.Close();
     }
+
     // Update is called once per frame
     void Update () {
 	
