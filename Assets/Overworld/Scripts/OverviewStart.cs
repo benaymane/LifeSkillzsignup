@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -86,7 +87,10 @@ public class OverviewStart : MonoBehaviour {
 		}
 	}
 
-
+    public void profileTransfer()
+    {
+        SceneManager.LoadScene("Profile");
+    }
 
 }
 

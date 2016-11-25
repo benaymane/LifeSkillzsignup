@@ -23,3 +23,5 @@ EditorBuildSettings:
     path: Assets/Register/Register.unity
   - enabled: 1
     path: Assets/Login/Login.unity
+  - enabled: 1
+    path: Assets/Profile/Profile.unity
