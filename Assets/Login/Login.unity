@@ -261,8 +261,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400929371}
   - 20: {fileID: 400929375}
-  - 124: {fileID: 400929374}
   - 92: {fileID: 400929373}
+  - 124: {fileID: 400929374}
   - 81: {fileID: 400929372}
   m_Layer: 0
   m_Name: Camera
