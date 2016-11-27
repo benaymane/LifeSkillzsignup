@@ -8,12 +8,13 @@ public class Profile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //just for testing
         if( User.connected )
         {
             if (User.userInfo != null)
-                status.GetComponent<Text>().text = "You are connected " + User.userInfo[1];
+                status.GetComponent<Text>().text = User.userInfo[1];
             else
-                status.GetComponent<Text>().text = "You are connected but no userinfo";
+                status.GetComponent<Text>().text = "You are connected BUT no userinfo";
 
         }
         else
