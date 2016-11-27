@@ -3,3 +3,4 @@ ID	Username	Email	Password	DoB
 2	Bennito	a@c.com	123456	1/1/2015
 3	kelito	a@k.com	121212	1/1/2015
 4	eglknef	a@.c	159159	1/2/2014
+5	newone	email@.com	159159	5/6/1954

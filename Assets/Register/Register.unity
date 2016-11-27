@@ -834,7 +834,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 268864727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 965d8cc61f3ba48068d8fe670409fd07, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cba3bec641f36141ad8a295557196ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   username: {fileID: 720369678}
@@ -3197,8 +3197,6 @@ MonoBehaviour:
     - m_Text: This is your email address
       m_Image: {fileID: 0}
     - m_Text: This is your parent/guardian's email address
-      m_Image: {fileID: 0}
-    - m_Text: Option C
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

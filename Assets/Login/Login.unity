@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5411765, g: 0.5411765, b: 0.5411765, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -520,7 +520,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: password
+  m_Text: '********'
 --- !u!222 &778635996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5441177, g: 0.5441177, b: 0.5441177, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925743613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca8559aacc574d9db7b7887fcd5e915, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fa7224e0d9165546921d98f8595b943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   username: {fileID: 1770005851}
@@ -1541,8 +1541,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2139728765}
   m_TextComponent: {fileID: 778635995}
   m_Placeholder: {fileID: 818017072}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
