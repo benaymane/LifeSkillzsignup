@@ -86,6 +86,10 @@ public class dbHandler : MonoBehaviour {
         return null;
     }
 
+    /*
+        Function to retrieve an account information by id then we empty the password and give back all the information.
+        Notice this is a static function!
+    */
     static public string[] getUser( int id )
     {
 

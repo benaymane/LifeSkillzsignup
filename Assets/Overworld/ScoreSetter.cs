@@ -6,7 +6,7 @@ public class ScoreSetter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<Text> ().text = "Score: " + GlobalScore.score;
+		GetComponent<Text> ().text = "Sxcore: " + GlobalScore.score;
 	}
 	
 	// Update is called once per frame

@@ -37,10 +37,13 @@ public class Login : MonoBehaviour {
     //TO DO: The account still doesn't live through out the game, need to set it up soon
     public void signinButton() {
         int id;
+
+        //check fields to be non empty
         if (_username == "" || _password == "")
             UnityEditor.EditorUtility.DisplayDialog("ERROR", "Please fill in all the fields!", "Retry");
+
         else if ( (id = db.exist(_username, _password) ) != -1) {
-            User.Connect(id);
+            User.Connect(id); //populate Global User before changing scenes.
             UnityEditor.EditorUtility.DisplayDialog("Welcome", "Welcome to Overworld!", "Enter");
             SceneManager.LoadScene("OverviewMap");
         } else {
