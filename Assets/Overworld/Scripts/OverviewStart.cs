@@ -17,7 +17,7 @@ public class OverviewStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (OverviewStart.dialogueControl) {
+       if (OverviewStart.dialogueControl) {
 			speechBubble.SetActive (true);
 			introDialogue.SetActive (true);
 			gameDialogue.SetActive (false);
@@ -34,11 +34,16 @@ public class OverviewStart : MonoBehaviour {
 			schoolButton.GetComponent<Button> ().interactable = true;
 			bathroomButton.GetComponent<Button> ().interactable = true;
 		}
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {
-		/*
+        if (!User.connected)
+        {
+            UnityEditor.EditorUtility.DisplayDialog("Goodbye!", "You are not logged in anymore, try siging in again! :)", "OK!");
+            SceneManager.LoadScene("Login");
+        }
+        /*
 		if (Application.platform != RuntimePlatform.Android ) {
 			if (Input.GetMouseButtonDown(0)) {
 				count++;
@@ -73,7 +78,7 @@ public class OverviewStart : MonoBehaviour {
 			}
 		}
 		*/
-	}
+    }
 
 	public void Next() {
 		if (OverviewStart.dialogueControl) {

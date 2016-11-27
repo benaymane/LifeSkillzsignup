@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.IO;
 
@@ -21,6 +22,9 @@ public class dbHandler : MonoBehaviour {
             inFile.WriteLine("ID\tUsername\tEmail\tPassword\tDoB");
  
         close();
+
+        //ID is not optimal. TO DO: store an ID number at the begining 
+        //so we don't need to read everything each time.
         id = readLines();
     }
 
@@ -38,17 +42,17 @@ public class dbHandler : MonoBehaviour {
         close();
     }
 
-    //Checks if username or password exist in DB, if so then checks if password is correct.
-    public bool exist( string login, string password )
+    //Checks if username or password exist in DB, if so then checks if password is correct. If everything ok return id
+    public int exist( string login, string password )
     {
         //We get the line where the user lives
         string[] user = getUser(login);
 
         //Check if there is such user OR if the password is the same
         if (user == null || !user[3].Equals(password))
-            return false;
+            return -1;
 
-        return true;
+        return Int32.Parse(user[0]);
     }
 
     //Checks if an account exists by checking if username/email is there already
@@ -80,6 +84,31 @@ public class dbHandler : MonoBehaviour {
 
         close();
         return null;
+    }
+
+    /*
+        Function to retrieve an account information by id then we empty the password and give back all the information.
+        Notice this is a static function!
+    */
+    static public string[] getUser( int id )
+    {
+
+        StreamReader outFile = new StreamReader(FILE_NAME);
+        string line = outFile.ReadLine(); //Skip header
+        string[] choppedLine;
+        int i = 0;
+
+        while ((line = outFile.ReadLine()) != null)
+        {
+            i++;
+            if (i == id)
+                break;
+        }
+
+        outFile.Close();
+        choppedLine = line.Split('\t');
+        choppedLine[2] = "";
+        return choppedLine;
     }
 
     //Reads and keep track of how many lines there are in DB
