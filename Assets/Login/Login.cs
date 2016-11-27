@@ -36,9 +36,13 @@ public class Login : MonoBehaviour {
     //Checks if information written is right, if so start the game. Otherwise retry.
     //TO DO: The account still doesn't live through out the game, need to set it up soon
     public void signinButton() {
-        if (db.exist(_username, _password)) {
-            SceneManager.LoadScene("OverviewMap");
+        int id;
+        if (_username == "" || _password == "")
+            UnityEditor.EditorUtility.DisplayDialog("ERROR", "Please fill in all the fields!", "Retry");
+        else if ( (id = db.exist(_username, _password) ) != -1) {
+            User.Connect(id);
             UnityEditor.EditorUtility.DisplayDialog("Welcome", "Welcome to Overworld!", "Enter");
+            SceneManager.LoadScene("OverviewMap");
         } else {
             UnityEditor.EditorUtility.DisplayDialog("ERROR", "The information you entered is incorrect!", "Retry");
         }
