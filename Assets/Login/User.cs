@@ -18,5 +18,14 @@ public static class User {
         userInfo = dbHandler.getUser(userID); //Calls getUser static function to retrive all info but the password
         connected = true;
     }   
+
+    public static void updateInfo(string email, string zip, string dob)
+    {
+        userInfo[dbHandler.EMAIL_INDEX] = email;
+        userInfo[dbHandler.ZIP_INDEX] = zip;
+        userInfo[dbHandler.DOB_INDEX] = dob;
+
+        dbHandler.updateAccount(Int32.Parse(userInfo[dbHandler.ID_INDEX]), userInfo);
+    }
     
 }

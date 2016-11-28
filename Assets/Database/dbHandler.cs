@@ -6,6 +6,13 @@ using System.IO;
 public class dbHandler : MonoBehaviour {
     //Database name
     const string FILE_NAME = "LifeSkillsDB.txt";
+    public static int ID_INDEX = 0,
+        USERNAME_INDEX = 1,
+        EMAIL_INDEX = 2,
+        PASSWORD_INDEX = 3,
+        DOB_INDEX = 4,
+        ZIP_INDEX = 5,
+        SCORE_INDEX = 6;
 
     //Current users + 1
     int id;
@@ -19,13 +26,13 @@ public class dbHandler : MonoBehaviour {
     {
         openToWrite();
         if (new FileInfo(FILE_NAME).Length == 0)
-            inFile.WriteLine("ID\tUsername\tEmail\tPassword\tDoB");
+            inFile.WriteLine("ID\tUsername\tEmail\tPassword\tDoB\tZipCode\tScore");
  
         close();
 
         //ID is not optimal. TO DO: store an ID number at the begining 
         //so we don't need to read everything each time.
-        id = readLines();
+        id = getNextID();
     }
 
     // Use this for initialization
@@ -37,9 +44,24 @@ public class dbHandler : MonoBehaviour {
     public void addAccount( string username, string email, string password, string dob)
     {
         openToWrite();
-        inFile.WriteLine(id+"\t"+username + "\t" + email + "\t" + password + "\t" + dob);
+        inFile.WriteLine(id+"\t"+username + "\t" + email + "\t" + password + "\t" + dob + "\t" + "0" + "\t" + "0");
         id++;
         close();
+    }
+
+    public static void updateAccount(int id, string[] accountArr )
+    {
+        string account = "";
+
+        for (int i = 0; i < accountArr.Length-1; i++) {
+            account += accountArr[i] + "\t";
+        }
+        account += accountArr[accountArr.Length - 1];
+
+        string[] fullDB = File.ReadAllLines(FILE_NAME);
+        fullDB[id] = account;
+
+        File.WriteAllLines(FILE_NAME, fullDB);
     }
 
     //Checks if username or password exist in DB, if so then checks if password is correct. If everything ok return id
@@ -49,7 +71,7 @@ public class dbHandler : MonoBehaviour {
         string[] user = getUser(login);
 
         //Check if there is such user OR if the password is the same
-        if (user == null || !user[3].Equals(password))
+        if (user == null || !user[PASSWORD_INDEX].Equals(password))
             return -1;
 
         return Int32.Parse(user[0]);
@@ -75,7 +97,7 @@ public class dbHandler : MonoBehaviour {
         while ((line = outFile.ReadLine()) != null)
         {
             choppedLine = line.Split('\t'); //split line by tabs
-            if (choppedLine[1].Equals(value) || choppedLine[2].Equals(value))
+            if (choppedLine[USERNAME_INDEX].Equals(value) || choppedLine[EMAIL_INDEX].Equals(value))
             {
                 close();
                 return choppedLine;
@@ -87,7 +109,7 @@ public class dbHandler : MonoBehaviour {
     }
 
     /*
-        Function to retrieve an account information by id then we empty the password and give back all the information.
+        Function to retrieve an account information by id and give back all the information. Password is included, ouch.
         Notice this is a static function!
     */
     static public string[] getUser( int id )
@@ -107,18 +129,24 @@ public class dbHandler : MonoBehaviour {
 
         outFile.Close();
         choppedLine = line.Split('\t');
-        choppedLine[2] = "";
         return choppedLine;
     }
 
-    //Reads and keep track of how many lines there are in DB
-    int readLines()
+    //Gets the ID of the next account to be created. Remember if we delete an account that spot is gone so we keep going with the id.
+    //Counting lines would be a bad idea because we will end up with 2 users having same id.
+    int getNextID()
     {
         openToRead();
-
-        int i = 0;
-        while (outFile.ReadLine() != null)
-            i++;
+        string line = outFile.ReadLine();
+        int i = 1;
+        while (true)
+        {
+            line = outFile.ReadLine();
+            if (line != null)
+                i = Int32.Parse(line.Substring(0, line.IndexOf("\t"))) + 1;
+            else
+                break;
+        }
 
         close();
         return i;

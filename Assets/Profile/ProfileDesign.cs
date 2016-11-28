@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ProfileDesign : MonoBehaviour {
     public GameObject profilePanel;
     public GameObject giftPanel;
     public GameObject signoutPanel;
+    public GameObject passwordPanel;
 
     public GameObject profileTab, giftTab, signoutTab;
     int activeTab = 1;
@@ -39,6 +41,11 @@ public class ProfileDesign : MonoBehaviour {
         highlightTab(signoutTab);
 
         activeTab = 3;
+    }
+
+    public void passwordChangeButton()
+    {
+        showPanel(passwordPanel);
     }
 
     void highlightTab(GameObject tab)
@@ -84,11 +91,18 @@ public class ProfileDesign : MonoBehaviour {
         profilePanel.SetActive(false);
         giftPanel.SetActive(false);
         signoutPanel.SetActive(false);
+        passwordPanel.SetActive(false);
 
         panel.SetActive(true);
     }
-	// Update is called once per frame
-	void Update () {
+
+    public void signout()
+    {
+        User.connected = false;
+        SceneManager.LoadScene("Login");
+    }
+    // Update is called once per frame
+    void Update () {
 	
 	}
 }
