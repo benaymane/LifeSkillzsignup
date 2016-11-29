@@ -12,11 +12,13 @@ public static class User {
     //Holds all information of a single user in the same order as database
     public static string[] userInfo;
     
+    public static int score = 0;
     //Used to populate the static variables within the class with the right info.
     public static void Connect(int userID)
     {
         userInfo = dbHandler.getUser(userID); //Calls getUser static function to retrive all info but the password
         connected = true;
+        score = Int32.Parse(userInfo[dbHandler.SCORE_INDEX]);
     }   
 
     public static void updateInfo(string email, string zip, string dob)
@@ -31,6 +33,13 @@ public static class User {
     public static void updatePassword(string newPassword)
     {
         User.userInfo[dbHandler.PASSWORD_INDEX] = newPassword;
+        dbHandler.updateAccount(Int32.Parse(userInfo[dbHandler.ID_INDEX]), userInfo);
+    }
+
+    public static void updateScore(int scr)
+    {
+        score += scr;
+        userInfo[dbHandler.SCORE_INDEX] = score.ToString();
         dbHandler.updateAccount(Int32.Parse(userInfo[dbHandler.ID_INDEX]), userInfo);
     }
 }

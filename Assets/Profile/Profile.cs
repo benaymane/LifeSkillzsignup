@@ -90,7 +90,11 @@ public class Profile : MonoBehaviour {
 
         if( currPass.Equals(User.userInfo[dbHandler.PASSWORD_INDEX]) )
         {
-
+            if( newPass.Length < 6 || newPassConf.Length < 6)
+            {
+                EditorUtility.DisplayDialog("ERROR!", "Your password is less than 6 characters!", "Retry");
+                return;
+            }
             if( newPass.Equals(newPassConf))
             {
                 User.updatePassword(newPass);

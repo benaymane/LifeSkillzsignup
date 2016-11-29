@@ -39,7 +39,7 @@ public class SetFoodFields : MonoBehaviour {
     if (totalScore < 0)
       totalScore = 0;
 
-    GlobalScore.score += totalScore;
+        GlobalScore.addScore(totalScore);
 
 
 

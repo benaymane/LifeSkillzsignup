@@ -20,7 +20,7 @@ public class SetScoreFields : MonoBehaviour {
                      "Total Score: " + (Controller.blanksFilled + 5*Controller.checksCompleted);
 
 
-    GlobalScore.score += Controller.blanksFilled + (5*Controller.checksCompleted);
+    GlobalScore.addScore( Controller.blanksFilled + (5*Controller.checksCompleted) );
                      
 	
 	}
