@@ -72,6 +72,20 @@ public class Login : MonoBehaviour {
         outFile.Close();
     }
 
+    public static bool isTrackingLogin()
+    {
+        bool status = false;
+        StreamReader outFile = new StreamReader("config.txt");
+        string st = outFile.ReadLine();
+
+        if (st.Equals("ON"))
+            status = true;
+
+        outFile.Close();
+
+        return status;
+    }
+
     public static void writeConfigFile(StreamWriter inFile, bool status, string savedUser, string savedPass)
     {
         bool newFile = false;
@@ -120,7 +134,6 @@ public class Login : MonoBehaviour {
                 writeConfigFile(null, false, _username, "-");
 
             User.Connect(id); //populate Global User before changing scenes.
-            UnityEditor.EditorUtility.DisplayDialog("Welcome", "Welcome to Overworld!", "Enter");
             SceneManager.LoadScene("OverviewMap");
         } else {
             UnityEditor.EditorUtility.DisplayDialog("ERROR", "The information you entered is incorrect!", "Retry");

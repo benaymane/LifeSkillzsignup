@@ -4,4 +4,4 @@ ID	Username	Email	Password	DoB	ZipCode	Score
 3	kelito	a@k.com	121212	1/1/2015	0	0
 4	eglknef	a@.c	159159	1/2/2014	0	0
 5	newone	email@.com	159159	5/6/1954	0	0
-6	crazyBen	b.b@b.com	111111	2/29/1957	0	0
+6	crazyBen	b...b@.com	159159	5/29/2010	94800	0

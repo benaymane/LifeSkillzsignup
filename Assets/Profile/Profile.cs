@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEditor;
 
 public class Profile : MonoBehaviour {
     public GameObject status,
@@ -10,7 +11,11 @@ public class Profile : MonoBehaviour {
         zipInput,
         board,
         zipMSG,
-        updateMSG;
+        updateMSG,
+        profilePanel,
+        currPassword,
+        newPassword,
+        newPasswordConf;
 
     public Dropdown
         month,
@@ -35,8 +40,7 @@ public class Profile : MonoBehaviour {
         }
         else
         {
-            status.GetComponent<Text>().text = "You are NOT connected";
-
+            SceneManager.LoadScene("Login");
         }
     }
 	
@@ -44,6 +48,22 @@ public class Profile : MonoBehaviour {
     {
         string _email = emailInput.GetComponent<InputField>().text;
         string _zip = zipInput.GetComponent<InputField>().text;
+
+        if (!Register.emailFormat(_email))
+        {
+            EditorUtility.DisplayDialog("ERROR!", "Your email is not in the right format!\n Correct format: xxxx@xxx.xxx", "Retry");
+            return;
+        }
+        else if (_zip.Length != 5)
+        {
+            EditorUtility.DisplayDialog("ERROR!", "Your Zip-Code should be 5 characters!", "Retry");
+            return;
+        }
+        else if (month.value == 0 || day.value == 0 || year.value == 0)
+        {
+            EditorUtility.DisplayDialog("ERROR!", "Please select a date of birth", "Retry");
+            return;
+        }
 
         string dob;
         int _months = month.value,
@@ -54,6 +74,45 @@ public class Profile : MonoBehaviour {
         User.updateInfo(_email, _zip, dob);
 
         showBoard(updateMSG);
+    }
+
+    public void changePassword( )
+    {
+        string currPass = currPassword.GetComponent<InputField>().text,
+            newPass = newPassword.GetComponent<InputField>().text,
+            newPassConf = newPasswordConf.GetComponent<InputField>().text;
+
+        if (currPass == "" || newPass == "" || newPassConf == "" )
+        {
+            EditorUtility.DisplayDialog("ERROR!", "Please fill in all the fields!", "Retry");
+            return;
+        }
+
+        if( currPass.Equals(User.userInfo[dbHandler.PASSWORD_INDEX]) )
+        {
+
+            if( newPass.Equals(newPassConf))
+            {
+                User.updatePassword(newPass);
+
+                if(Login.isTrackingLogin())
+                {
+                    Login.writeConfigFile(null, true, User.userInfo[dbHandler.USERNAME_INDEX], newPass);
+                }
+
+                showBoard(updateMSG);
+            } else
+            {
+                EditorUtility.DisplayDialog("ERROR!", "The new passwords don't match!", "Retry");
+
+            }
+        }
+        else
+        {
+
+            EditorUtility.DisplayDialog("ERROR!", "The Password is incorrect!", "Retry");
+
+        }
     }
 
     public void showBoard(GameObject msg)
@@ -67,6 +126,7 @@ public class Profile : MonoBehaviour {
         board.SetActive(false);
         zipMSG.SetActive(false);
         updateMSG.SetActive(false);
+        
     }
 
     void populateInputs()
@@ -108,7 +168,10 @@ public class Profile : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-	
+        if( !profilePanel.activeSelf && User.connected && User.userInfo != null)
+        {
+            populateInputs();
+        }
 	}
 
     public void overworldTransfer()

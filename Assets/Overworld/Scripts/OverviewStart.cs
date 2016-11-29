@@ -40,7 +40,6 @@ public class OverviewStart : MonoBehaviour {
 	void Update () {
         if (!User.connected)
         {
-            UnityEditor.EditorUtility.DisplayDialog("Goodbye!", "You are not logged in anymore, try siging in again! :)", "OK!");
             SceneManager.LoadScene("Login");
         }
         /*

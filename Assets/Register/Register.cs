@@ -114,7 +114,7 @@ public class Register : MonoBehaviour {
     }
 
     //Checks if the email format is of *@*.* format where * is any combination of alphabets
-    bool emailFormat(string email)
+    public static bool emailFormat(string email)
     { 
         /* 
             This method is weak, needs better coding for better checking.
@@ -132,9 +132,9 @@ public class Register : MonoBehaviour {
     }
 
     //Checks if the length of a string is 6 or more
-    bool lengthChecker(string arg)
+    public static bool lengthChecker(string arg, int length = 6)
     {
-        return arg.Length >= 6;
+        return arg.Length >= length;
     }
     
     //Handles different errors. Notice the second parameter is not always necessary and thus has a default

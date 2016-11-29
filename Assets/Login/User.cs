@@ -28,4 +28,9 @@ public static class User {
         dbHandler.updateAccount(Int32.Parse(userInfo[dbHandler.ID_INDEX]), userInfo);
     }
     
+    public static void updatePassword(string newPassword)
+    {
+        User.userInfo[dbHandler.PASSWORD_INDEX] = newPassword;
+        dbHandler.updateAccount(Int32.Parse(userInfo[dbHandler.ID_INDEX]), userInfo);
+    }
 }
