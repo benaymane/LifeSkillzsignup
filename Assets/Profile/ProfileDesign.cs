@@ -99,6 +99,7 @@ public class ProfileDesign : MonoBehaviour {
     public void signout()
     {
         User.connected = false;
+        Login.writeConfigFile(null, false, User.userInfo[dbHandler.USERNAME_INDEX], "-");
         SceneManager.LoadScene("Login");
     }
     // Update is called once per frame

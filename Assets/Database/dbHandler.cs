@@ -67,6 +67,8 @@ public class dbHandler : MonoBehaviour {
     //Checks if username or password exist in DB, if so then checks if password is correct. If everything ok return id
     public int exist( string login, string password )
     {
+        login = login.ToLower();
+
         //We get the line where the user lives
         string[] user = getUser(login);
 
@@ -97,7 +99,7 @@ public class dbHandler : MonoBehaviour {
         while ((line = outFile.ReadLine()) != null)
         {
             choppedLine = line.Split('\t'); //split line by tabs
-            if (choppedLine[USERNAME_INDEX].Equals(value) || choppedLine[EMAIL_INDEX].Equals(value))
+            if (choppedLine[USERNAME_INDEX].ToLower().Equals(value) || choppedLine[EMAIL_INDEX].ToLower().Equals(value))
             {
                 close();
                 return choppedLine;

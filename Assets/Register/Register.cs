@@ -122,7 +122,7 @@ public class Register : MonoBehaviour {
             First check if there is a @, if there is then make sure the index of it is smaller than .
             Keep in mind if . doesn't exist than the index of it is -1 and if @ exists then the second 
             check will be false */
-        return email.IndexOf('@') != -1 ? (email.IndexOf('@') < email.IndexOf('.') ? true : false) : false;
+        return email.IndexOf('@') != -1 ? (email.IndexOf('@') < email.LastIndexOf('.') ? true : false) : false;
     }
 
     //Checks if 2 strings are the same
