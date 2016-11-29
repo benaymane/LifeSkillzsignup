@@ -7,6 +7,7 @@
 !/ProjectSettings/
 !.gitignore
 !LifeSkillsDB.txt
+!config.txt
 
 # OS Stuff
 .DS_Store
